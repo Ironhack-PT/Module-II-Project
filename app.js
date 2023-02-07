@@ -2,7 +2,10 @@ require("dotenv").config()
 
 const express = require("express")
 const logger = require("morgan")
+//const passport = require('passport');
 const createError = require("http-errors")
+//const { sessionConfig } = require('./config/session.config')
+const router = require('./config/routes.config');
 
 require("./config/db.config")
 require("./config/hbs.config")
@@ -10,12 +13,18 @@ require("./config/routes.config")
 
 const app = express()
 
-app.use(logger("dev"))
-app.use(express.urlencoded({ extended: false }))
-app.use(express.static("public"))
+app.use(logger('dev')); 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
 app.set("views", __dirname + "/views")
 app.set("view engine", "hbs")
+
+app.use(express.static("public"));
+
+/** Router **/
+app.use('/', router)
+
 
 app.use((req, res, next) => {
 	next(createError(404, "Resource not found"))
