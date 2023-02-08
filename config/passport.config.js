@@ -54,7 +54,7 @@ passport.serializeUser((user, next) => {
     },
     (accessToken, refreshToken, profile, next) => {
       const googleID = profile.id;
-      const name = profile.displayName;
+      const username = profile.displayName;
       const email = profile.emails && profile.emails[0].value || undefined;
   
       if (googleID && email) {
@@ -69,9 +69,8 @@ passport.serializeUser((user, next) => {
             if (user) {
               next(null, user)
             } else {
-              // Crear uno nuevo
               return User.create({
-                name,
+                username,
                 email,
                 password: mongoose.Types.ObjectId(),
                 googleID

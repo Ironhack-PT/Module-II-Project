@@ -26,8 +26,8 @@ router.post("/register", authMiddleware.isNotAuthenticated, authController.doReg
 
 router.get('/login',  authMiddleware.isNotAuthenticated, authController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, authController.doLogin)
-router.get('/login/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
-router.get('/auth/google/callback', authController.doLoginGoogle)
+router.get('/login/google', authMiddleware.isNotAuthenticated, passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
+router.get('/auth/google/callback', authMiddleware.isNotAuthenticated, authController.doLoginGoogle)
 
 
 //PROFILE
