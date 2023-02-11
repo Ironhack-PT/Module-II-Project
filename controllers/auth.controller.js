@@ -87,5 +87,5 @@ module.exports.profile = (req, res, next) => {
 
 module.exports.doLogout = (req, res, next) => {
     req.session.destroy()
-    res.redirect("/login")
+    res.redirect("/")
   }

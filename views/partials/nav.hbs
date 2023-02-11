@@ -1,10 +1,13 @@
-<nav class="navbar navbar-light" style="background-color: white;">
+<nav class="navbar navbar-light shadow-sm" style="background-color: white;">
   <div class="container">
     <a class="navbar-brand" href="/">
-     <img src="/images/ALQUIGAME.png" alt="Bootstrap" width="90" height="80"></a>
+     <img src="/images/ALQUIGAME.png" alt="Bootstrap" width="120" height="90"></a>
 
-     <button class="btn my-btn" style="color:rgb(5, 185, 185); border-color: blue" type="submit">Registrate o inicia sesión</button>
-
+    {{#if currentUser}}
+    <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/logout">Logout</a></button>
+    {{else}}
+    <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/register">Registrate o inicia sesión</a></button>
+     {{/if}}
     {{!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
       aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" >
       <span class="navbar-toggler-icon"></span>
