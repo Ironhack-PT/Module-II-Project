@@ -1,4 +1,39 @@
+html, 
+body {
+    height: 100%;
+    width: 100%;
+}
+
 .my-btn:hover {
-    background-color: aquamarine;
+        background-color: rgb(10, 207, 207);
+    } 
+
+.link-login {
+    text-decoration: none;
+    color:  rgb(10, 207, 207);
+}
+
+.link-login:hover {
     color: rgb(28, 28, 28) !important;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+/*.login,
+.signup {
+    background-image: url("/images/");
+    background-position: center;
+    background-size: cover; 
+    background-repeat:no-repeat ;
+    max-width: 100%;
+    max-height: 100%;
+    height: calc(100vh - 100px);
+    padding: 20px 0;
+}*/
+
+.login .row,
+.signup .row {
+    --bs-gutter-x: 0 !important;
 }
