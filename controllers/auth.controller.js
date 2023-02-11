@@ -83,3 +83,9 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
 module.exports.profile = (req, res, next) => {
     res.render("user/profile")
   }
+
+
+module.exports.doLogout = (req, res, next) => {
+    req.session.destroy()
+    res.redirect("/login")
+  }

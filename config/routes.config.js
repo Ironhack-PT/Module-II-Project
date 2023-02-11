@@ -34,4 +34,8 @@ router.get('/auth/google/callback', authMiddleware.isNotAuthenticated, authContr
 
 router.get("/profile", authMiddleware.isAuthenticated, authController.profile)
 
+//LOGOUT
+
+router.get("/logout", authController.doLogout)
+
 module.exports = router;
