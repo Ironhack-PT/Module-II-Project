@@ -1,0 +1,18 @@
+<div class="d-flex min-vh-100 gap-2">
+  {{> sidebar}}
+  <section class="border border-bottom-0 border-top-0 w-100 p-4">
+    <h1 class="text-primary">Get money from your games<h1>
+
+    <form action="/new-game" method="POST">
+      <div class="mb-3">
+        <label for="body" class="form-label">Game</label>
+        <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" name="body" required>{{game}}</textarea>
+        <div class="invalid-feedback">
+          {{errors.body}}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </section>
+</div>
