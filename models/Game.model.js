@@ -11,11 +11,6 @@ const gameSchema = new mongoose.Schema(
       maxLength: [320, 'Max description length is 320 characters'],
       required: true
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'Game must have an owner']
-    },
     price: {
       type: Number,
       required: [true, 'Game must have a price']
@@ -26,8 +21,14 @@ const gameSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: [true, ' Game image is mandatory']
-    }
+      required: [true, ' Game image is mandatory'],
+      imageUrl: String
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, 'Game must have an owner']
+    },
   },
   {
     timestamps: true
