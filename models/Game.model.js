@@ -8,7 +8,6 @@ const gameSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      maxLength: [320, 'Max description length is 320 characters'],
       required: true
     },
     price: {
