@@ -13,9 +13,9 @@ require('./config/passport.config');
 
 const app = express()
 
-app.use(logger('dev')); 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
+app.use(logger("dev"))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.set("views", __dirname + "/views")
 app.set("view engine", "hbs")
