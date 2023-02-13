@@ -1,4 +1,28 @@
+<div class="container">
+  {{> sidebar}}
 
-
-{{> sidebar}}
-
+  <div class="row">
+    {{#each games as |game|}}
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{game.title}}</h3>
+            <p class="card-text">{{game.description}}</p>
+            <p class="card-text">{{game.state}}</p>
+            <p class="card-text">{{game.price}}</p>
+            <img src="{{game.image}}" class="card-image"></img>
+          </div>
+          
+          <div class="p-3">
+            <form action="/profile/{{game.id}}/delete" method="POST">
+            <button class="delete-game-btn btn btn-danger btn-small">Delete</button>
+            </form>
+            <form action="/profile/{{game.id}}/edit" method="GET">
+            <button class="update-game-btn btn-primary btn-smaill">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

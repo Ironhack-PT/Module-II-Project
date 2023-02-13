@@ -5,6 +5,7 @@ const router = express.Router();
 const authController = require('../controllers/auth.controller');
 const authMiddleware = require("../middlewares/auth.middleware");
 const gameController = require('../controllers/game.controller');
+const userController = require('../controllers/user.controller')
 const upload = require('../config/cloudinary.config');
 
 
@@ -37,14 +38,18 @@ router.get('/auth/google/callback', authMiddleware.isNotAuthenticated, authContr
 
 router.get('/new-game', authMiddleware.isAuthenticated, gameController.create);
 router.post('/new-game', authMiddleware.isAuthenticated, upload.single('image'), gameController.doCreate);
-router.post('/game/:id/delete', authMiddleware.isAuthenticated, gameController.delete);
+router.post('/profile/:id/delete', authMiddleware.isAuthenticated, gameController.delete);
+router.get('/profile/:id/edit', authMiddleware.isAuthenticated, gameController.update);
+router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('image'), gameController.doUpdate);
+
 
 //router.post('/tweets/:id/like', authMiddleware.isAuthenticated, userController.like); esto lo usaremos para las valoraciones
 
 
 //PROFILE
 
-router.get("/profile", authMiddleware.isAuthenticated, authController.profile)
+router.get("/profile", authMiddleware.isAuthenticated, userController.profile);
+
 
 //LOGOUT
 

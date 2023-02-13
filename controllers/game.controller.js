@@ -17,7 +17,6 @@ module.exports.doCreate = (req, res, next) => {
 		...req.body,
 		user: req.user.id,
 	}
-	console.log({ newGame })
 
 	if (req.file) {
 		newGame.image = req.file.path
@@ -42,4 +41,23 @@ module.exports.delete = (req, res, next) => {
 			res.redirect("/profile")
 		})
 		.catch((err) => next(err))
+}
+
+module.exports.update = (req, res, next) => {
+	Game.findByIdAndUpdate(req.params.id)
+		.then((game) => {
+			res.render("user/game-update", { game })
+		})
+		.catch((err) => console.log(err))
+}
+
+module.exports.doUpdate = (req, res, next) => {
+	if (req.file) {
+		req.body.image = req.file.path
+	}
+	Game.findByIdAndUpdate(req.params.id, req.body)
+		.then(() => {
+			res.redirect("/profile")
+		})
+		.catch((err) => console.err(err))
 }
