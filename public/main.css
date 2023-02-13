@@ -42,11 +42,21 @@ body {
     justify-content: center;
 }
 
-footer {
-    background-color:rgb(10, 207, 207);
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  #content-wrap {
+    padding-bottom: 2.5rem;    
+  }
+  
+  #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 40px;
-    color: white;
+    height: 2.5rem;  
+    background-color:rgb(10, 207, 207); 
+    height: 25px;
+    color: white;         
   }
