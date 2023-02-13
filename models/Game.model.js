@@ -26,7 +26,7 @@ const gameSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: [true, 'Game must have an owner']
+      required: true
     },
   },
   {

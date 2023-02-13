@@ -65,7 +65,6 @@ passport.serializeUser((user, next) => {
           ]
         })
           .then(user => {
-            console.log('encuentro usuario?', user)
             if (user) {
               next(null, user)
             } else {

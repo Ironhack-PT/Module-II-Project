@@ -4,6 +4,7 @@
 
     <form action="/new-game" method="POST" enctype="multipart/form-data">
      <div class="mb-3">
+      
     <label for="title" class="form-label">Title</label>
     <input value="{{game.title}}" class="form-control {{#if errors.title}}is-invalid{{/if}}" id="title" name="title" required>
     <div class="invalid-feedback">
