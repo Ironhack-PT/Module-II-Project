@@ -28,6 +28,12 @@ const userSchema = new mongoose.Schema({
     },
   });
 
+  userSchema.virtual('games', {
+    ref: 'Game',
+    foreignField: 'user',
+    localField: '_id',
+    justOne: false
+  })
 
   userSchema.pre('save', function (next) {
     const rawPassword = this.password;

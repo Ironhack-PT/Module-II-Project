@@ -1,7 +1,8 @@
 <div class="container">
-  {{> sidebar}}
+  {{> sidebar currentPage}}
 
   <div class="row">
+    <h2>Your games</h2>
     {{#each games as |game|}}
       <div class="col">
         <div class="card">
@@ -10,7 +11,7 @@
             <p class="card-text">{{game.description}}</p>
             <p class="card-text">{{game.state}}</p>
             <p class="card-text">{{game.price}}</p>
-            <img src="{{game.image}}" class="card-image"></img>
+            <img src="{{game.image}}" width="200px"class="card-image"></img>
           </div>
           
           <div class="p-3">
