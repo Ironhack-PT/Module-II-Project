@@ -5,5 +5,14 @@ module.exports.profile = (req, res, next) => {
     .then(games => {
       res.render('user/profile', { games })
     })
-    .catch(next)
+    .catch(err => console.err(err))
 }
+
+module.exports.findRent = (req, res, next) => {
+  Game.find({ user: { $ne: req.user.id }})
+    .then(games => {
+      res.render('user/rent-game', { games })
+    })
+    .catch(err => console.err(err))
+}
+

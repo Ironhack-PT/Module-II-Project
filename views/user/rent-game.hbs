@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <h2>Other games</h2>
+        {{#each games as |game|}}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{game.title}}</h3>
+                    <p class="card-text">{{game.description}}</p>
+                    <p class="card-text">{{game.state}}</p>
+                    <p class="card-text">{{game.price}}</p>
+                    <img src="{{game.image}}" width="200px" class="card-image"></img>
+                </div>
+                <div class="p-3">
+                    <form action="" method=""> <!--añadir a posteriori -->
+                        <button class="delete-game-btn btn btn-danger btn-small">RENT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+</div>

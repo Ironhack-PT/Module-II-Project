@@ -40,7 +40,7 @@ module.exports.delete = (req, res, next) => {
 		.then(() => {
 			res.redirect("/profile")
 		})
-		.catch((err) => next(err))
+		.catch(err => console.err(err))
 }
 
 module.exports.update = (req, res, next) => {
