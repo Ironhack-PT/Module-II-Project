@@ -49,6 +49,7 @@ router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('
 //PROFILE
 
 router.get("/profile", authMiddleware.isAuthenticated, userController.profile);
+router.get("/rent-a-game",authMiddleware.isAuthenticated,userController.findRent);
 
 
 //LOGOUT
