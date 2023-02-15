@@ -4,7 +4,10 @@
      <img src="/images/ALQUIGAME.png" alt="Bootstrap" width="120" height="90"></a>
 
     {{#if currentUser}}
+    <div class="d-flex">
+    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="bi bi-person-circle"href="/profile"></a></button>
     <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/logout">Logout</a></button>
+    </div>
     {{else}}
     <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/register">Register or sign up</a></button>
      {{/if}}
