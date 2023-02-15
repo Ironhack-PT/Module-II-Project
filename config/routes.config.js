@@ -5,7 +5,8 @@ const router = express.Router();
 const authController = require('../controllers/auth.controller');
 const authMiddleware = require("../middlewares/auth.middleware");
 const gameController = require('../controllers/game.controller');
-const userController = require('../controllers/user.controller')
+const userController = require('../controllers/user.controller');
+const rentController = require("../controllers/rent.controller")
 const upload = require('../config/cloudinary.config');
 
 
@@ -44,6 +45,15 @@ router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('
 
 
 //router.post('/tweets/:id/like', authMiddleware.isAuthenticated, userController.like); esto lo usaremos para las valoraciones
+
+// RENT
+
+router.get("/game/:id/rent", rentController.createRent);
+
+router.post("/game/rent", rentController.doCreateRent);
+
+
+// router.get("/profile/pending-validations", rentController.pendingValidation);
 
 
 //PROFILE

@@ -108,3 +108,8 @@ li {
 .btn-create {
   align-items: center;
 }
+
+
+.hidden {
+  display: none;
+}

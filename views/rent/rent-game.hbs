@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="rent-game col-4">
+        <div class="rent-game-intro">
+            <h2>Rent a new game and enjoy!</h2>
+        </div>
+
+        <form action="/rent/game" method="POST"> 
+
+
+            <!-- Ok -->
+            <div class=" row mb-3 hidden">
+                <label for="_id" class="form-label"></label>
+                <input value="{{currentUser.id}}" class="form-control" id="_id" name="_id">
+            </div>
+
+            <!-- Ok -->
+
+            <div class="row mb-3 hidden">
+                <label for="_id" class="form-label">OCULTAR ID JUEGO</label>
+                <input value="{{game._id}}" class="form-control" id="_id" name="_id">
+            </div>
+
+            <!-- Ok -->
+
+            <div class="row mb-3 hidden">
+                <label for="user" class="form-label">USER JUEGO</label>
+                <input value="{{game.user}}" class="form-control" name="user">
+            </div>
+
+            <!-- Ok -->
+            <div class="row mb-3">
+                <h2>{{game.title}}</h2>
+            </div>
+
+            <!-- Ok -->
+
+            <div class="row mb-3">
+                <img src="{{game.image}}"></img>
+            </div>
+
+            <div class="row mb-3">
+                <label for="start">Start Date:</label>
+                <input type="date" id="start" name="start">
+            </div>
+
+            <div class="row mb-3">
+                <label for="end">End Date:</label>
+                <input type="date" id="end" name="end">
+            </div>
+
+            <div class="btn-create">
+                <button type="submit" class="btn btn-outline-info bg-light">REQUEST IT TO RENT</button>
+            </div>
+        </form>
+    </div>
+</div>
