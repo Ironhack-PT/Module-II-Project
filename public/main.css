@@ -1,24 +1,50 @@
-html, 
+html,
 body {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
 }
 
+/* INDEX */
 .my-btn:hover {
-        background-color: rgb(10, 207, 207);
-    } 
+  background-color: rgb(10, 207, 207);
+}
 
 .link-login {
-    text-decoration: none;
-    color:  rgb(10, 207, 207);
+  text-decoration: none;
+  color: rgb(10, 207, 207);
 }
 
 .link-login:hover {
-    color: rgb(28, 28, 28) !important;
+  color: rgb(28, 28, 28) !important;
 }
 
 .navbar {
-    padding: 0 !important;
+  padding: 0 !important;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background-color: rgb(10, 207, 207);
+  height: 25px;
+  color: white;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+.container {
+  display: flex;
 }
 
 /*.login,
@@ -35,36 +61,50 @@ body {
 
 .login .row,
 .signup .row {
-    --bs-gutter-x: 0 !important;
+  --bs-gutter-x: 0 !important;
+}
+
+/* PROFILE */
+
+.profile-bar {
+  margin-left: 15px;
+  height: 100vh;
 }
 
 .profile-username {
-    justify-content: center;
+  justify-content: center;
 }
 
-  #page-container {
-    position: relative;
-    min-height: 100vh;
-  }
+li {
+  text-decoration: none;
+}
 
-  #content-wrap {
-    padding-bottom: 2.5rem;    
-  }
-  
-  #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;  
-    background-color:rgb(10, 207, 207); 
-    height: 25px;
-    color: white;         
-  }
+.card-own-games,
+.card-other-games {
+  box-shadow: 0px 0px 22px -6px rgba(10, 207, 207, 0.25);
+  border-radius: 10%;
+}
 
-  .container {
-    display: flex;
-  }
+/* Home */
 
-  li {
-    text-decoration: none;
-  }
+.home-title {
+  text-align: center;
+}
+
+/* Create games*/
+
+.create-game {
+  border: 1px solid red;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 22px -6px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+}
+.create-game-intro {
+  text-align: center;
+}
+
+.btn-create {
+  align-items: center;
+}

@@ -1,29 +1,36 @@
-<div class="container">
-  {{> sidebar}}
+  <h3 class="text-center pt-2" style="color:rgb(10, 207, 207)">Your own games avalaible to rent</h3>
+  <div class="row m-0">
+    <div class="col-2">
+      {{> sidebar}}
+    </div>
 
-  <div class="row">
-    <h2>Your games</h2>
-    {{#each games as |game|}}
-      <div class="col">
-        <div class="card">
+  
+    <div class="col-10 mt-3">
+      <div class="row m-0">
+      {{#each games as |game|}}
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
+        <div class="card card-own-games d-flex">
           <div class="card-body">
             <h3 class="card-title">{{game.title}}</h3>
             <p class="card-text">{{game.description}}</p>
             <p class="card-text">{{game.state}}</p>
             <p class="card-text">{{game.price}}</p>
-            <img src="{{game.image}}" width="200px"class="card-image"></img>
+            <div class="d-flex justify-content-center">
+            <img src="{{game.image}}" width="180px" height="180px" class="card-image"></img>
+            </div>
           </div>
-          
-          <div class="p-3">
+          <div class="d-flex justify-content-around mb-2">
             <form action="/profile/{{game.id}}/delete" method="POST">
-            <button class="delete-game-btn btn btn-danger btn-small">Delete</button>
+              <button class="delete-game-btn btn btn-danger btn-small">Delete</button>
             </form>
             <form action="/profile/{{game.id}}/edit" method="GET">
-            <button class="update-game-btn btn-primary btn-smaill">Update</button>
+              <button class="update-game-btn btn btn-primary btn-smaill">Update</button>
             </form>
           </div>
         </div>
       </div>
-    {{/each}}
+    
+      {{/each}}
+      </div>
+    </div>
   </div>
-</div>

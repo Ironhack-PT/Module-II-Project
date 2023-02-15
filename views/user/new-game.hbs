@@ -1,42 +1,46 @@
-<div class="d-flex min-vh-100 gap-2">
-  <section class="border border-bottom-0 border-top-0 w-100 p-4">
-    <h1 class="text-primary">Get money from your games<h1>
 
+  <div class="row justify-content-center">
+     <div class="create-game col-4">
+      <div class="create-game-intro">
+      <h2>Create a New Game to rent</h2>
+      <p class="text-primary">Get money from your games</p>
+      </div>
     <form action="/new-game" method="POST" enctype="multipart/form-data">
-     <div class="mb-3">
-      
-    <label for="title" class="form-label">Title</label>
+     <div class=" row mb-3">
+    <label for="title" class="form-label">Game Name</label>
     <input value="{{game.title}}" class="form-control {{#if errors.title}}is-invalid{{/if}}" id="title" name="title" required>
     <div class="invalid-feedback">
       {{errors.title}}
     </div>
   </div>
-  <div class="mb-3">
+  <div class="row mb-3">
         <label for="description" class="form-label">Game description</label>
         <textarea class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" rows="3" name="description" required>{{game}}</textarea>
         <div class="invalid-feedback">
           {{errors.description}}
         </div>
       </div>
-  <div class="mb-3">
-    <label for="price" class="form-label">Price</label>
+  <div class="row mb-3">
+    <label for="price" class="form-label">Price per day</label>
     <input value="{{game.price}}" type="number" class="form-control {{#if errors.price}}is-invalid{{/if}}" id="price" name="price" required>
     <div class="invalid-feedback">
       {{errors.price}}
     </div>
   </div>
-  <div class="mb-3">
+  <div class="row mb-3">
     <label for="state" class="form-label">State</label>
     <input value="{{game.state}}" class="form-control {{#if errors.state}}is-invalid{{/if}}" id="state" name="state" required>
     <div class="invalid-feedback">
       {{errors.state}}
     </div>
   </div>
-<div class="mb-3">
-      <label for="image" class="form-label">Insert game img</label>
+<div class="row mb-3">
+      <label for="image" class="form-label">Insert your game´s photo</label>
       <input class="form-control" type="file" name="image" id="image" required>
     </div>
-        <button type="submit" class="btn btn-outline-info bg-light">Submit</button>
+    <div class="btn-create">
+        <button type="submit" class="btn btn-outline-info bg-light">Create</button>
+    </div>
     </form>
-  </section>
-</div>
+     </div>
+  </div>
