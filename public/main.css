@@ -79,7 +79,8 @@ li {
   text-decoration: none;
 }
 
-.card-own-games {
+.card-own-games,
+.card-other-games {
   box-shadow: 0px 0px 22px -6px rgba(10, 207, 207, 0.25);
   border-radius: 10%;
 }
