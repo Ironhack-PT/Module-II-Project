@@ -1,0 +1,190 @@
+
+<h2 style="color:rgb(10, 207, 207)">Do you prefer to buy your favorite games?</h2>
+<style>
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+</style>
+<div id='map' class="mapbox mt-3" style='width: 500px; height: 400px; border-radius: 10%;'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoib2xlYW9uaXplIiwiYSI6ImNsZTdkM2RiZTA0Y3kzdnFld3pkOTJqMzUifQ.K27_mt9ScGSNCeX2kHz2PA';
+    const geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.701979166128532, 40.39104177669356]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.709230176397541, 40.38695409450542]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.7126998143020593, 40.402353326955904]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.7017371234440692, 40.405379875832246]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.707487779757974, 40.41067367635884]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.7140984517230375, 40.406099951549194]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.7084226143885366, 40.408786582357436]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.704858050101077, 40.41443699641146]
+                }
+            },
+
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.701561900981103, 40.414969334854604]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.7263489186636476, 40.38785851749885]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.6679862724554617, 40.40725779221538]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.671497082778717, 40.4206231056793]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'iconSize': [25, 25]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-3.6679862724554617, 40.42864101947266]
+                }
+            },
+
+        ]
+    };
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-3.6981262832739388, 40.40663162100271], // starting position [lng, lat]
+        zoom: 12, // starting zoom
+    });
+
+
+    // Add markers to the map.
+    for (const marker of geojson.features) {
+        // Create a DOM element for each marker.
+        const el = document.createElement('div');
+        const width = marker.properties.iconSize[0];
+        const height = marker.properties.iconSize[1];
+        el.className = 'marker';
+        el.style.backgroundImage = `url(/images/stick.png)`;
+        el.style.width = `${width}px`;
+        el.style.height = `${height}px`;
+        el.style.backgroundSize = '100%';
+
+        // Add markers to the map.
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+    }
+
+
+  /*    const search = new MapboxSearchBox();
+search.accessToken = "pk.eyJ1Ijoib2xlYW9uaXplIiwiYSI6ImNsZTdkM2RiZTA0Y3kzdnFld3pkOTJqMzUifQ.K27_mt9ScGSNCeX2kHz2PA";
+map.addControl(search);  */ // PREGUNTAR COMO PONER BARRA BUSQUEDA Y GEOLOC.
+ 
+</script>
