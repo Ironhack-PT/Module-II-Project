@@ -35,6 +35,21 @@ const userSchema = new mongoose.Schema({
     justOne: false
   })
 
+  
+  userSchema.virtual('rents', {
+    ref: 'Rent',
+    foreignField: 'renter',
+    localField: '_id',
+    justOne: false
+  })
+
+  userSchema.virtual('rents', {
+    ref: 'Rent',
+    foreignField: 'tenant',
+    localField: '_id',
+    justOne: false
+  })
+
   userSchema.pre('save', function (next) {
     const rawPassword = this.password;
     if (this.isModified('password')) {   

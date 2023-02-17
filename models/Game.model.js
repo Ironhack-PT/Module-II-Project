@@ -34,6 +34,14 @@ const gameSchema = new mongoose.Schema(
   }
 )
 
+  
+gameSchema.virtual('rents', {
+  ref: 'Rent',
+  foreignField: 'game',
+  localField: '_id',
+  justOne: false
+})
+
 const Game = mongoose.model('Game', gameSchema)
 
 module.exports = Game
