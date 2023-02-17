@@ -4,27 +4,27 @@
             <h2>Rent a new game and enjoy!</h2>
         </div>
 
-        <form action="/rent/game" method="POST"> 
+        <form action="/game/{{game._id}}/rent" method="POST"> 
 
 
             <!-- Ok -->
             <div class=" row mb-3 hidden">
-                <label for="_id" class="form-label"></label>
-                <input value="{{currentUser.id}}" class="form-control" id="_id" name="_id">
+                <label for="renter" class="form-label"></label>
+                <input value="{{currentUser.id}}" class="form-control" id="renter" name="renter">
             </div>
 
             <!-- Ok -->
 
             <div class="row mb-3 hidden">
-                <label for="_id" class="form-label">OCULTAR ID JUEGO</label>
-                <input value="{{game._id}}" class="form-control" id="_id" name="_id">
+                <label for="game" class="form-label">OCULTAR ID JUEGO</label>
+                <input value="{{game._id}}" class="form-control" id="game" name="game">
             </div>
 
             <!-- Ok -->
 
             <div class="row mb-3 hidden">
-                <label for="user" class="form-label">USER JUEGO</label>
-                <input value="{{game.user}}" class="form-control" name="user">
+                <label for="tenant" class="form-label">USER JUEGO</label>
+                <input value="{{game.user}}" class="form-control" name="tenant">
             </div>
 
             <!-- Ok -->

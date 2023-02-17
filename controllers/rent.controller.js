@@ -1,6 +1,6 @@
-const Game = require("../models/Game.model")
-const mongoose = require("mongoose")
-const Rent = require("../models/Rent.model")
+const Game = require("../models/Game.model");
+const mongoose = require("mongoose");
+const Rent = require("../models/Rent.model");
 
 module.exports.createRent = (req, res, next) => {
     Game.findById(req.params.id)
@@ -11,11 +11,11 @@ module.exports.createRent = (req, res, next) => {
 }
 
 module.exports.doCreateRent = (req, res, next) => {
-    Rent.Create(req.body)
+    Rent.create(req.body)
     .then((rent)=>{
         res.redirect('/profile')
     })
-    .catch(err => console.err(err))
+    .catch(error=> res.send(error))
 }
 
 

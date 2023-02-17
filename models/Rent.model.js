@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-// const User = require("/models/User.model");
-// const Game = require("/models/Game.model");
+
 
 const rentSchema = new mongoose.Schema({
   renter: {

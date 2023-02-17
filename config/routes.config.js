@@ -6,7 +6,7 @@ const authController = require('../controllers/auth.controller');
 const authMiddleware = require("../middlewares/auth.middleware");
 const gameController = require('../controllers/game.controller');
 const userController = require('../controllers/user.controller');
-const rentController = require("../controllers/rent.controller")
+const rentController = require("../controllers/rent.controller");
 const upload = require('../config/cloudinary.config');
 
 
@@ -50,7 +50,7 @@ router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('
 
 router.get("/game/:id/rent", rentController.createRent);
 
-router.post("/game/rent", rentController.doCreateRent);
+router.post("/game/:id/rent", rentController.doCreateRent);
 
 
 // router.get("/profile/pending-validations", rentController.pendingValidation);
