@@ -20,14 +20,12 @@ module.exports.doCreateRent = (req, res, next) => {
 
 
 
-// module.exports.pendingValidation = (req, res, next) => {
-//     res.render("rent/pending-validations")
-// }
+module.exports.pendingValidation = (req, res, next) => {
+    Rent.find({ renter: req.user.id })
+    .then((pendingGames) => {
+        res.render("rent/pending-validations", {pendingGames})
+    })
+    .catch(error=> res.send(error))
+    console.log(req.user.id);
 
-// module.exports.doPendingValidation = (req, res, next) => {
-//     Game.findById(req.params.id)
-//     .then((game)=> {
-//         console.log('********* ', game);
-//         res.render("rent/pending-validations", {user})
-//     })
-// }
+}
