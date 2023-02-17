@@ -16,7 +16,8 @@ const gameSchema = new mongoose.Schema(
     },
     state: {
       type: String,
-      required: [true, 'Game must have a state']
+      enum: ['new', 'almost new', 'used'],
+      default: 'New'
     },
     image: {
       type: String,
