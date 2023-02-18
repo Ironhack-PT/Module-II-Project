@@ -29,8 +29,8 @@ const rentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum:["Free", "On Going", "Reserved", "Rented"],
-    default: "Free"
+    enum:["Requested", "Reserved", "Denied", "Rented"],
+    default: "Requested"
   }
 });
 

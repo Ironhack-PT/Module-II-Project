@@ -183,8 +183,10 @@
     }
 
 
-  /*    const search = new MapboxSearchBox();
-search.accessToken = "pk.eyJ1Ijoib2xlYW9uaXplIiwiYSI6ImNsZTdkM2RiZTA0Y3kzdnFld3pkOTJqMzUifQ.K27_mt9ScGSNCeX2kHz2PA";
-map.addControl(search);  */ // PREGUNTAR COMO PONER BARRA BUSQUEDA Y GEOLOC.
- 
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
 </script>
