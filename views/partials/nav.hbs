@@ -1,15 +1,20 @@
 <nav class="navbar navbar-light shadow-sm" style="background-color: white;">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-     <img src="/images/ALQUIGAME.png" alt="Bootstrap" width="120" height="90"></a>
+  <a class="navbar-brand" href="/">
+    <img src="/images/ALQUIGAME.png" alt="Bootstrap" width="120" height="90"></a>
 
+  {{#isHome dontRenderSearchbar=dontRenderSearchbar}}
+  {{> search}}
+  {{/isHome}}
+
+  <div class="d-flex justify-content-end">
+    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="btn-rent" href="/new-game" style="color:rgb(10, 207, 207); text-decoration:none"> Rent your Games</a></button>
     {{#if currentUser}}
     <div class="d-flex">
-    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="bi bi-person-circle"href="/profile"></a></button>
+    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="btn-rent" href="/profile" style="color:rgb(10, 207, 207); text-decoration:none">Profile</a></button>
     <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/logout">Logout</a></button>
     </div>
     {{else}}
     <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/register">Register or sign up</a></button>
-     {{/if}}
+    {{/if}}
   </div>
 </nav>

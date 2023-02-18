@@ -17,7 +17,7 @@ const GOOGLE_SCOPES = [
   
 
 router.get('/', (req, res, next) => {
-    res.render('misc/index')
+    res.render('misc/index', { dontRenderSearchbar: true })
   })
 
 
