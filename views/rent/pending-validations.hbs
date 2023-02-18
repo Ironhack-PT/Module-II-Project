@@ -1,4 +1,13 @@
 AQUI VAN LAS SOLICITUDES DE VALIDACIÓN
 
 
-<H2>{{pendingGames.game}}</H2>
+
+<h1>Has pedido estos juegos</h1>
+{{#each rentsReducer.rented  as |rent|}}
+    {{rent.game}}
+{{/each}}
+<h1>Te han pedido estos juegos</h1>
+{{#each rentsReducer.requested  as |rent|}}
+    {{rent.game}}
+{{/each}}
+

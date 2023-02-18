@@ -32,7 +32,6 @@ const rentSchema = new mongoose.Schema({
     enum:["Free", "On Going", "Reserved", "Rented"],
     default: "Free"
   }
-
 });
 
 

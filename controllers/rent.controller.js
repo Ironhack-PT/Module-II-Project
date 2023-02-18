@@ -19,11 +19,22 @@ module.exports.doCreateRent = (req, res, next) => {
 }
 
 
-
 module.exports.pendingValidation = (req, res, next) => {
-    Rent.find({ renter: req.user.id })
-    .then((pendingGames) => {
-        res.render("rent/pending-validations", {pendingGames})
+    Rent.find({ $or: [{ tenant: req.user.id }, { renter: req.user.id }] },)
+    .populate('game')
+    .then((pendingRents) => {
+        const rentsReducer = pendingRents.reduce((acc, rent) => {
+            console.log(rent.renter.toString(), req.user.id)
+            if (rent.renter.toString() === req.user.id) {
+                acc.rented ? acc.rented = [...acc.rented, rent] : acc.rented = [rent]
+            }
+            if (rent.tenant.toString() === req.user.id) {
+                acc.requested ? acc.requested = [...acc.requested, rent] : acc.requested = [rent]
+            }
+            return acc
+        }, {})
+        console.log('rents que soy renter', rentsReducer)
+        res.render("rent/pending-validations", {rentsReducer})
     })
     .catch(error=> res.send(error))
     console.log(req.user.id);
