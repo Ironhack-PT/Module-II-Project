@@ -52,8 +52,11 @@ router.get("/game/:id/rent", rentController.createRent);
 
 router.post("/game/:id/rent", rentController.doCreateRent);
 
+router.patch("/rent/:id", rentController.doEdit);
 
 router.get("/profile/pending-validations", rentController.pendingValidation);
+
+
 
 
 //PROFILE
