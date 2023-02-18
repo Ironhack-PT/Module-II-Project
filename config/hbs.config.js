@@ -16,4 +16,9 @@ hbs.registerHelper('isValidating', (options) => {
     } else {
         return options.inverse(this)
     }
+hbs.registerHelper('isHome', function (options) {
+  console.log(options.hash);
+  if (options && !options.hash.dontRenderSearchbar) {
+    return options.fn(this);
+  }
 })

@@ -9,9 +9,6 @@ body {
 }
 
 /* INDEX */
-.my-btn:hover {
-  background-color: rgb(10, 207, 207);
-}
 
 .link-login {
   text-decoration: none;
@@ -23,7 +20,8 @@ body {
 }
 
 .navbar {
-  padding: 0 !important;
+  padding: 0 10px !important;
+  width: 100%;
 }
 
 #footer {
@@ -45,6 +43,18 @@ body {
 
 .container {
   display: flex;
+  margin: 0 !important;
+  width: 100%;
+}
+
+#searchbar {
+text-align: center;
+width: 60%;
+display: flex;
+}
+
+#inputsearch{
+  width: 100%;
 }
 
 /*.login,
@@ -89,7 +99,7 @@ li {
 /* Home */
 
 .home-title {
-  text-align: center;
+  text-align:center;
 }
 
 /* Create games*/
