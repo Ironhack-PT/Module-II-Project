@@ -3,8 +3,6 @@
     <div class="col-2">
       {{> sidebar}}
     </div>
-
-  
     <div class="col-10 mt-3">
       <div class="row m-0">
       {{#each games as |game|}}
@@ -15,8 +13,12 @@
             <p class="card-text-desc">{{game.description}}</p>
             <p class="card-text">{{game.state}}</p>
             <p class="card-text">{{game.price}}</p>
+            <h3 class="card-title">Title: {{game.title}}</h3>
+            <p class="card-text">Description: {{game.description}}</p>
+            <p class="card-text">State: {{game.state}}</p>
+            <p class="card-text">Price: {{game.price}}€</p>
             <div class="d-flex justify-content-center">
-            <img src="{{game.image}}" width="180px" height="180px" class="card-image"></img>
+            <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
             </div>
           </div>
           <div class="d-flex justify-content-around mb-2">
@@ -29,7 +31,6 @@
           </div>
         </div>
       </div>
-    
       {{/each}}
       </div>
     </div>

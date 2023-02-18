@@ -29,11 +29,12 @@
   </div>
   <div class="row mb-3">
     <label for="state" class="form-label">State</label>
-    <input value="{{game.state}}" class="form-control {{#if errors.state}}is-invalid{{/if}}" id="state" name="state" required>
-    <div class="invalid-feedback">
-      {{errors.state}}
+    <select name="state" id="state">
+      <option value="new">New</option>
+      <option value="almost new">Almost New</option>
+      <option value="used">Used</option>
+    </select>
     </div>
-  </div>
 <div class="row mb-3">
       <label for="image" class="form-label">Insert your game´s photo</label>
       <input class="form-control" type="file" name="image" id="image" required>
