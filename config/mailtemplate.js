@@ -1,4 +1,4 @@
-module.exports.generateEmail = (userId) => {
+module.exports.generateEmail = () => {
     return `
     <!doctype html>
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -72,15 +72,7 @@ module.exports.generateEmail = (userId) => {
               <tr>
                 <td
                    align="left" style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:25px;padding-bottom:0px;padding-left:25px;word-break:break-word;"
-                >
-      <div
-         style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:11px;line-height:1;text-align:left;color:#000000;"
-      ><span style="font-size: 11px">Example mailer</span></div>
-                </td>
-              </tr>
-        </tbody>
-      </table>
-      </div>
+
           <!--[if mso | IE]></td></tr></table><![endif]-->
               </td>
             </tr>
@@ -122,7 +114,7 @@ module.exports.generateEmail = (userId) => {
                 >
       <div
          style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;"
-      ><p><span style="color: rgb(106, 138, 162);"><span style="font-weight: bold;"><span style="font-size: 16px;">Thanks for joining Example</span></span>
+      ><p><span style="color: rgb(106, 138, 162);"><span style="font-weight: bold;"><span style="font-size: 16px;">Another user wants to rent one of your games</span></span>
             </span>
           </p></div>
                 </td>
@@ -133,7 +125,7 @@ module.exports.generateEmail = (userId) => {
                 >
       <div
          style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:justify;color:#000000;"
-      ><p><span style="color: rgb(57, 63, 76);">Click on the following button to activate your account</span></p></div>
+      ><p><span style="color: rgb(57, 63, 76);">Click on the following button to accept or deny this rent</span></p></div>
                 </td>
               </tr>
               <tr>
@@ -148,9 +140,9 @@ module.exports.generateEmail = (userId) => {
              align="center" bgcolor="#c7896f" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#c7896f;" valign="middle"
           >
             <a
-               href="${process.env.HOST || `http://localhost:${process.env.PORT || 3000}`}/activate/${userId}" style="display:inline-block;background:#c7896f;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;" target="_blank"
+               href="${process.env.HOST || `http://localhost:${process.env.PORT || 3000}`}/profile/pending-validations" style="display:inline-block;background:#c7896f;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;" target="_blank"
             >
-              Activate account
+              GO TO YOUR PROFILE
             </a>
           </td>
         </tr>
@@ -202,7 +194,7 @@ module.exports.generateEmail = (userId) => {
       <div
          style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;"
       ><p>Any questions, comments, concerns?</p>
-          <p>Contact our support staff at <a href="https://mjml.io" style="text-decoration: none; color: inherit;"><span style="font-weight: bold;">example@example.com</span></a></p></div>
+          <p>Contact our support staff at <a href="https://mjml.io" style="text-decoration: none; color: inherit;"><span style="font-weight: bold;">Alquigameapp@gmail.com</span></a></p></div>
                 </td>
               </tr>
         </tbody>

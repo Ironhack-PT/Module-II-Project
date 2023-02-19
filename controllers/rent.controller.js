@@ -51,7 +51,7 @@ module.exports.pendingValidation = (req, res, next) => {
         res.render("rent/pending-validations", {rentsReducer})
     })
     .catch(error=> res.send(error))
-    console.log(req.user.id);
+    // console.log(req.user.id);
 
 }
 

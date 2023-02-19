@@ -2,7 +2,6 @@ const createError = require("http-errors");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
-const sendMail = require('../config/mailer.config');
 
 module.exports.register = (req, res, next) => {
   res.render("auth/signup");
@@ -24,7 +23,6 @@ module.exports.doRegister = (req, res, next) => {
       if (!user) {
         return User.create(req.body)
         .then((user) => {
-          sendMail(user.email, user.username)
           res.redirect("/login");
         });
       } else {

@@ -13,7 +13,7 @@ const sendMail = (emailToSend, id) => {
   const mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
     to: emailToSend,
-    subject: `Bienvenido! ${id}`,
+    subject: `${id}: Other user wants to rent one of your games from Alquigame`,
     html: generateEmail(id)
   }
 
