@@ -17,6 +17,7 @@ body {
 
 .link-login:hover {
   color: rgb(28, 28, 28) !important;
+  
 }
 
 .navbar {
@@ -39,6 +40,7 @@ body {
 
 #content-wrap {
   padding-bottom: 2.5rem;
+  min-height: calc(100vh - var(--footer-height));
 }
 
 .container {
@@ -105,7 +107,6 @@ li {
 /* Create games*/
 
 .create-game {
-  border: 1px solid red;
   padding-top: 5px;
   display: flex;
   flex-direction: column;

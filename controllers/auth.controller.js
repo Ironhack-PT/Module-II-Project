@@ -21,7 +21,8 @@ module.exports.doRegister = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        return User.create(req.body).then((user) => {
+        return User.create(req.body)
+        .then((user) => {
           res.redirect("/login");
         });
       } else {
@@ -79,12 +80,6 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
   }
 
 
-
-/* module.exports.profile = (req, res, next) => {
-  console.log(req.user)
-    res.render("user/profile")
-  }
- */
 
 module.exports.doLogout = (req, res, next) => {
     req.session.destroy()

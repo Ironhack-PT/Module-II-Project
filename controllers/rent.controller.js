@@ -1,6 +1,7 @@
 const Game = require("../models/Game.model");
 const mongoose = require("mongoose");
 const Rent = require("../models/Rent.model");
+const sendMail = require('../config/mailer.config');
 
 module.exports.createRent = (req, res, next) => {
     Game.findById(req.params.id)
@@ -11,12 +12,19 @@ module.exports.createRent = (req, res, next) => {
 }
 
 module.exports.doCreateRent = (req, res, next) => {
+    Game.findById(req.params.id)
+     .populate({
+        path    : 'user',
+    })
+    .then((game)=>{
+    sendMail(game.user.email, game.user.username)
+    })
     Rent.create(req.body)
     .then((rent)=>{
         res.redirect('/profile')
     })
     .catch(error=> res.send(error))
-}
+}   
 
 
 module.exports.pendingValidation = (req, res, next) => {
@@ -24,6 +32,9 @@ module.exports.pendingValidation = (req, res, next) => {
     .populate({
         path    : 'game',
         populate: { path: 'user' }
+    })
+    .populate ({
+        path    : 'renter',
     })
     .then((pendingRents) => {
         const rentsReducer = pendingRents.reduce((acc, rent) => {
@@ -40,7 +51,7 @@ module.exports.pendingValidation = (req, res, next) => {
         res.render("rent/pending-validations", {rentsReducer})
     })
     .catch(error=> res.send(error))
-    console.log(req.user.id);
+    // console.log(req.user.id);
 
 }
 

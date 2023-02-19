@@ -29,11 +29,10 @@ const rentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum:["Requested", "Reserved", "Denied", "Rented"],
+    enum:["Requested", "Reserved", "Free", "Rented"],
     default: "Requested"
   }
 });
-
 
 
 const Rent = mongoose.model("Rent", rentSchema);
