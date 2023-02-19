@@ -1,6 +1,7 @@
 const Game = require("../models/Game.model");
 const mongoose = require("mongoose");
 const Rent = require("../models/Rent.model");
+const sendMail = require('../config/mailer.config');
 
 module.exports.createRent = (req, res, next) => {
     Game.findById(req.params.id)
@@ -12,11 +13,16 @@ module.exports.createRent = (req, res, next) => {
 
 module.exports.doCreateRent = (req, res, next) => {
     Rent.create(req.body)
+    .populate({
+        path    : 'game',
+        populate: { path: 'user' }
+    })
     .then((rent)=>{
+        sendMail(rent.tenant.email, rent.tenant.username)
         res.redirect('/profile')
     })
     .catch(error=> res.send(error))
-}
+}   
 
 
 module.exports.pendingValidation = (req, res, next) => {

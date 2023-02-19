@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
+const sendMail = require('../config/mailer.config');
 
 module.exports.register = (req, res, next) => {
   res.render("auth/signup");
@@ -21,7 +22,9 @@ module.exports.doRegister = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        return User.create(req.body).then((user) => {
+        return User.create(req.body)
+        .then((user) => {
+          sendMail(user.email, user.username)
           res.redirect("/login");
         });
       } else {
@@ -79,12 +82,6 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
   }
 
 
-
-/* module.exports.profile = (req, res, next) => {
-  console.log(req.user)
-    res.render("user/profile")
-  }
- */
 
 module.exports.doLogout = (req, res, next) => {
     req.session.destroy()
