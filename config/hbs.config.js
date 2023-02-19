@@ -18,6 +18,16 @@ hbs.registerHelper('isValidating', (options) => {
     }
   })
 
+  hbs.registerHelper('isRented', (options) => {
+    const { rent } = options.hash;
+    console.log('****** ', options.hash);
+    if (rent.status === 'Rented') {
+        return options.fn(this)
+    } else {
+        return options.inverse(this)
+    }
+  })
+
 hbs.registerHelper('isHome', function (options) {
   console.log(options.hash);
   if (options && !options.hash.dontRenderSearchbar) {

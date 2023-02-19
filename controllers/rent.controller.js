@@ -12,13 +12,15 @@ module.exports.createRent = (req, res, next) => {
 }
 
 module.exports.doCreateRent = (req, res, next) => {
-    Rent.create(req.body)
-    .populate({
-        path    : 'game',
-        populate: { path: 'user' }
+    Game.findById(req.params.id)
+     .populate({
+        path    : 'user',
     })
+    .then((game)=>{
+    sendMail(game.user.email, game.user.username)
+    })
+    Rent.create(req.body)
     .then((rent)=>{
-        sendMail(rent.tenant.email, rent.tenant.username)
         res.redirect('/profile')
     })
     .catch(error=> res.send(error))
@@ -30,6 +32,9 @@ module.exports.pendingValidation = (req, res, next) => {
     .populate({
         path    : 'game',
         populate: { path: 'user' }
+    })
+    .populate ({
+        path    : 'renter',
     })
     .then((pendingRents) => {
         const rentsReducer = pendingRents.reduce((acc, rent) => {
