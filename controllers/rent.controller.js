@@ -2,6 +2,7 @@ const Game = require("../models/Game.model");
 const mongoose = require("mongoose");
 const Rent = require("../models/Rent.model");
 const sendMail = require('../config/mailer.config');
+const createRentMail = require('../config/templates/createRentMail')
 
 module.exports.createRent = (req, res, next) => {
     Game.findById(req.params.id)
@@ -17,7 +18,11 @@ module.exports.doCreateRent = (req, res, next) => {
         path    : 'user',
     })
     .then((game)=>{
-    sendMail(game.user.email, game.user.username)
+    //sendMail(game.user.email, game.user.username)
+    sendMail(game.user.email, {
+        subject: `${game.user.username}: Other user wants to rent one of your games from Alquigame`,
+        html: createRentMail()
+    })
     })
     Rent.create(req.body)
     .then((rent)=>{
@@ -59,7 +64,7 @@ module.exports.doEdit = (req, res, next) => {
   console.log('ID', req.params.id)
   console.log('newStatus', req.query.newStatus)
   Rent.findByIdAndUpdate(req.params.id, { $set : { status: req.query.newStatus}})
-  .then()
-  .catch()
+  .then(() => res.status(204).json({ status: 'Rented' }))
+  .catch(err => next(err))
 }
 

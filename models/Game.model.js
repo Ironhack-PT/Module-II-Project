@@ -29,6 +29,10 @@ const gameSchema = new mongoose.Schema(
       ref: 'User',
       required: true
     },
+    type: {
+      type: String,
+      enum: ['Retro games', 'Board games', 'Console games'],
+    }
   },
   {
     timestamps: true

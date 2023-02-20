@@ -9,12 +9,15 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const sendMail = (emailToSend, id) => {
+const sendMail = (emailToSend, options) => {
+  const { subject, html } = options;
   const mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
     to: emailToSend,
-    subject: `${id}: Other user wants to rent one of your games from Alquigame`,
-    html: generateEmail(id)
+    //subject: `${id}: Other user wants to rent one of your games from Alquigame`,
+    subject,
+    //html: generateEmail(id)
+    html
   }
 
   transporter.sendMail(mailOptions, function (error, info) {
