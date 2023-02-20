@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
                         feedback.classList.add('rented-game')
                         feedback.innerText = `Rented to ${renter}`
                     } else if (action === 'Free') {
+                        card.remove()
                         
                     }
                 })

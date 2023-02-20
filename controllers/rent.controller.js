@@ -43,8 +43,9 @@ module.exports.pendingValidation = (req, res, next) => {
     })
     .then((pendingRents) => {
         const rentsReducer = pendingRents.reduce((acc, rent) => {
-            console.log(rent.renter.toString(), req.user.id)
-            if (rent.renter.toString() === req.user.id) {
+            // console.log(rent.renter.toString(), req.user.id)
+            if (rent.renter._id.toString() === req.user.id) {
+                console.log('in');
                 acc.rented ? acc.rented = [...acc.rented, rent] : acc.rented = [rent]
             }
             if (rent.tenant.toString() === req.user.id) {
@@ -52,7 +53,6 @@ module.exports.pendingValidation = (req, res, next) => {
             }
             return acc
         }, {})
-        // console.log('rents que soy renter', rentsReducer)
         res.render("rent/pending-validations", {rentsReducer})
     })
     .catch(error=> res.send(error))
@@ -61,10 +61,20 @@ module.exports.pendingValidation = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-  console.log('ID', req.params.id)
-  console.log('newStatus', req.query.newStatus)
+//   console.log('ID', req.params.id)
+//   console.log('newStatus', req.query.newStatus)
   Rent.findByIdAndUpdate(req.params.id, { $set : { status: req.query.newStatus}})
   .then(() => res.status(204).json({ status: 'Rented' }))
   .catch(err => next(err))
 }
+
+module.exports.doDelete = (req, res, next) => {
+    Rent.findByIdAndDelete(req.params.id)
+    .then(() => {
+        res.redirect('/profile/pending-validations')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
 

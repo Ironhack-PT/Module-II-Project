@@ -27,7 +27,7 @@
         {{/each}}
     </div>
 </div>
-</div>
+
 
 
 
@@ -51,61 +51,50 @@
                     <div class="d-flex justify-content-center">
                         <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
                     </div>
-                {{#isValidating rent=rent}}
-                <div class="mb-2 requestedrent">
-                    <button class="pending-game btn btn-small bi bi-exclamation-triangle-fill mt-1">
-                        {{rent.renter.username}} is waiting for your validation</button>
-                </div>
-                </div>
-                <div class="d-flex justify-content-evenly">
-                   
-                        <button 
-                        class="btn my-btn btn-primary update-rent-btn"
-                        type="submit"
-                        data-idRent="{{rent.id}}"
-                        data-renter="{{rent.renter.username}}"
-                        data-action="Rented"
-                    >
-                        Accept
-                    </button>
-                    <button 
-                        class="btn my-btn btn-danger update-rent-btn"
-                        type="submit"
-                        data-idRent="{{rent.id}}"
-                        data-action="Free"
-                    >
-                        Deny
-                    </button>
-                    
-            
-                </div>
-                {{/isValidating}}
+                    {{#isValidating rent=rent}}
+                    <div class="mb-2 requestedrent">
+                        <button class="pending-game btn btn-small bi bi-exclamation-triangle-fill mt-1">
+                            {{rent.renter.username}} is waiting for your validation</button>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
 
-            {{#isRented rent=rent}} 
-            <div class=" validatedrent"> <!--Probando para DOM-->
-           <div class="mb-2">
-                    <button class="rented-game btn btn-small bi bi-calendar-check-fill mt-4">
-                     Rented to {{rent.renter.username}}</button>
-                </div>
-                </div>
-                <div class="d-flex justify-content-evenly mt-1">
-                   
-                        <button 
-                        class="btn my-btn btn-primary update-rent-btn"
-                        type="submit"
-                        data-idRent="{{rent.id}}"
-                        data-action="Rented"
-                    >
-                        Accept
-                    </button>
-            
-                </div>
-            </div>
+                        <button class="btn my-btn btn-primary update-rent-btn" type="submit" data-idRent="{{rent.id}}"
+                            data-renter="{{rent.renter.username}}" data-action="Rented">
+                            Accept
+                        </button>
+                        <form action="/rent/{{rent.id}}/delete" method="POST">
+                            <button class="btn my-btn btn-danger update-rent-btn" type="submit">
+                                <!--data-idRent="{{rent.id}}" data-action="Free" -->
+                                Deny
+                            </button>
+                        </form>
 
-             {{/isRented}}
+
+                    </div>
+                    {{/isValidating}}
+
+                    {{#isRented rent=rent}}
+                    <div class=" validatedrent"> <!--Probando para DOM-->
+                        <div class="mb-2">
+                            <button class="rented-game btn btn-small bi bi-calendar-check-fill mt-4">
+                                Rented to {{rent.renter.username}}</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-evenly mt-1">
+
+                        <button class="btn my-btn btn-primary update-rent-btn" type="submit" data-idRent="{{rent.id}}"
+                            data-action="Rented">
+                            Accept
+                        </button>
+
+                    </div>
+
+
+                    {{/isRented}}
+                </div>
             </div>
         </div>
+
         {{/each}}
     </div>
-</div>
 </div>
