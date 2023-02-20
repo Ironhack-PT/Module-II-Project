@@ -1,4 +1,5 @@
 const Game = require('../models/Game.model')
+const Like = require('../models/Like.model')
 
 module.exports.profile = (req, res, next) => {
   Game.find({ user: req.user.id })

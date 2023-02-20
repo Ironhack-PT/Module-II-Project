@@ -44,7 +44,11 @@ router.get('/profile/:id/edit', authMiddleware.isAuthenticated, gameController.u
 router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('image'), gameController.doUpdate);
 
 
-//router.post('/tweets/:id/like', authMiddleware.isAuthenticated, userController.like); esto lo usaremos para las valoraciones
+// LIKES
+
+
+// router.post('/game/:id/like', authMiddleware.isAuthenticated, userController.like)
+
 
 // RENT
 

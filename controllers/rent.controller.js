@@ -7,8 +7,8 @@ const createRentMail = require('../config/templates/createRentMail')
 module.exports.createRent = (req, res, next) => {
     Game.findById(req.params.id)
         .then((game)=> {
-            console.log('********* ', game);
-            res.render("rent/rent-game", {game})
+            const min = new Date().toISOString().split('T')[0];
+            res.render("rent/rent-game", {game, min})
         })
 }
 

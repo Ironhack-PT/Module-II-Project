@@ -34,3 +34,17 @@ hbs.registerHelper('isHome', function (options) {
     return options.fn(this);
   }
 })
+
+//LIKES
+
+/* hbs.registerHelper('hasLike', function (options) {
+  const { currentUser, tweet } = options.hash;
+
+  // like.tweet no es de tipo string, es de tipo object porque es un objectId
+  // así que le metemos un .toString() y asi se compara guay
+  if (currentUser.likes.some(like => like.tweet.toString() === tweet.id)) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+}) */
