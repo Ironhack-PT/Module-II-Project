@@ -52,13 +52,15 @@ router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('
 
 // RENT
 
-router.get("/game/:id/rent", rentController.createRent);
+router.get("/game/:id/rent", authMiddleware.isAuthenticated, rentController.createRent);
 
-router.post("/game/:id/rent", rentController.doCreateRent);
+router.post("/game/:id/rent", authMiddleware.isAuthenticated, rentController.doCreateRent);
 
-router.patch("/rent/:id", rentController.doEdit);
+router.patch("/rent/:id", authMiddleware.isAuthenticated, rentController.doEdit);
 
-router.get("/profile/pending-validations", rentController.pendingValidation);
+router.get("/profile/pending-validations", authMiddleware.isAuthenticated, rentController.pendingValidation);
+
+router.post('/rent/:id/delete', authMiddleware.isAuthenticated, rentController.doDelete)
 
 
 
