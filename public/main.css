@@ -131,3 +131,15 @@ li {
   height: 100px;
   overflow-y: auto;
 }
+
+.hidden {
+  display: none;
+}
+
+.pending-game {
+  background-color:rgb(232, 232, 81);
+}
+
+.rented-game {
+  background-color:rgb(17, 218, 47);
+}
