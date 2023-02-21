@@ -1,5 +1,6 @@
 const Game = require("../models/Game.model")
 const mongoose = require("mongoose")
+const { modelName } = require("../models/User.model")
 
 module.exports.create = (req, res, next) => {
 	res.render("user/new-game")
@@ -40,7 +41,7 @@ module.exports.delete = (req, res, next) => {
 		.then(() => {
 			res.redirect("/profile")
 		})
-		.catch(err => console.err(err))
+		.catch((err) => console.err(err))
 }
 
 module.exports.update = (req, res, next) => {
@@ -58,6 +59,17 @@ module.exports.doUpdate = (req, res, next) => {
 	Game.findByIdAndUpdate(req.params.id, req.body)
 		.then(() => {
 			res.redirect("/profile")
+		})
+		.catch((err) => console.err(err))
+}
+
+module.exports.search = (req, res, next) => {
+	Game.find({ 
+		title: { '$regex': req.body.value, $options: 'i' } ,
+		user: { $ne: req.user.id }
+	})
+		.then((games) => {
+			res.render("user/total-games", { games })
 		})
 		.catch((err) => console.err(err))
 }
