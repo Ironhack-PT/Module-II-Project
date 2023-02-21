@@ -56,6 +56,8 @@ router.get("/game/:id/rent", authMiddleware.isAuthenticated, rentController.crea
 
 router.post("/game/:id/rent", authMiddleware.isAuthenticated, rentController.doCreateRent);
 
+router.post("/game/search", gameController.search)
+
 router.patch("/rent/:id", authMiddleware.isAuthenticated, rentController.doEdit);
 
 router.get("/profile/pending-validations", authMiddleware.isAuthenticated, rentController.pendingValidation);
