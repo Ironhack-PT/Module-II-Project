@@ -20,9 +20,9 @@ const gameSchema = new mongoose.Schema(
       default: 'New'
     },
     image: {
-      type: String,
+      type: [String],
       required: [true, ' Game image is mandatory'],
-      imageUrl: String
+      // imageUrl: String
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,

@@ -38,10 +38,10 @@ router.get('/auth/google/callback', authMiddleware.isNotAuthenticated, authContr
 // GAMES
 
 router.get('/new-game', authMiddleware.isAuthenticated, gameController.create);
-router.post('/new-game', authMiddleware.isAuthenticated, upload.single('image'), gameController.doCreate);
+router.post('/new-game', authMiddleware.isAuthenticated, upload.array('image'), gameController.doCreate);
 router.post('/profile/:id/delete', authMiddleware.isAuthenticated, gameController.delete);
 router.get('/profile/:id/edit', authMiddleware.isAuthenticated, gameController.update);
-router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.single('image'), gameController.doUpdate);
+router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.array('image'), gameController.doUpdate);
 
 
 // LIKES
@@ -63,6 +63,8 @@ router.patch("/rent/:id", authMiddleware.isAuthenticated, rentController.doEdit)
 router.get("/profile/pending-validations", authMiddleware.isAuthenticated, rentController.pendingValidation);
 
 router.post('/rent/:id/delete', authMiddleware.isAuthenticated, rentController.doDelete)
+
+router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.historic )
 
 
 

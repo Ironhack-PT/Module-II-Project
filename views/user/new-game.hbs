@@ -1,55 +1,57 @@
-
-  <div class="row justify-content-center">
-     <div class="create-game col-4">
-      <div class="create-game-intro">
+<div class="row justify-content-center">
+  <div class="create-game col-4">
+    <div class="create-game-intro">
       <h2>Create a New Game to rent</h2>
       <p class="text-primary">Get money from your games</p>
-      </div>
-    <form action="/new-game" method="POST" enctype="multipart/form-data">
-     <div class=" row mb-3">
-    <label for="title" class="form-label">Game Name</label>
-    <input value="{{game.title}}" class="form-control {{#if errors.title}}is-invalid{{/if}}" id="title" name="title" required>
-    <div class="invalid-feedback">
-      {{errors.title}}
     </div>
-  </div>
-  <div class="row mb-3">
+    <form action="/new-game" method="POST" enctype="multipart/form-data">
+      <div class=" row mb-3">
+        <label for="title" class="form-label">Game Name</label>
+        <input value="{{game.title}}" class="form-control {{#if errors.title}}is-invalid{{/if}}" id="title" name="title"
+          required>
+        <div class="invalid-feedback">
+          {{errors.title}}
+        </div>
+      </div>
+      <div class="row mb-3">
         <label for="description" class="form-label">Game description</label>
-        <textarea class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" rows="3" name="description" required>{{game}}</textarea>
+        <textarea class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" rows="3"
+          name="description" required>{{game}}</textarea>
         <div class="invalid-feedback">
           {{errors.description}}
         </div>
       </div>
-  <div class="row mb-3">
-    <label for="price" class="form-label">Price per day</label>
-    <input value="{{game.price}}" type="number" class="form-control {{#if errors.price}}is-invalid{{/if}}" id="price" name="price" required>
-    <div class="invalid-feedback">
-      {{errors.price}}
-    </div>
-  </div>
-    <div class="row mb-3">
-    <label for="type" class="form-label">Type</label>
-    <select name="type" id="type">
-      <option value="Retro games">Retro games</option>
-      <option value="Board games">Board games</option>
-      <option value="Console games">Console games</option>
-    </select>
-    </div>
-  <div class="row mb-3">
-    <label for="state" class="form-label">State</label>
-    <select name="state" id="state">
-      <option value="new">New</option>
-      <option value="almost new">Almost New</option>
-      <option value="used">Used</option>
-    </select>
-    </div>
-<div class="row mb-3">
-      <label for="image" class="form-label">Insert your game´s photo</label>
-      <input class="form-control" type="file" name="image" id="image" required>
-    </div>
-    <div class="btn-create">
+      <div class="row mb-3">
+        <label for="price" class="form-label">Price per day</label>
+        <input value="{{game.price}}" type="number" class="form-control {{#if errors.price}}is-invalid{{/if}}"
+          id="price" name="price" required>
+        <div class="invalid-feedback">
+          {{errors.price}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="type" class="form-label">Type</label>
+        <select name="type" id="type">
+          <option value="Retro games">Retro games</option>
+          <option value="Board games">Board games</option>
+          <option value="Console games">Console games</option>
+        </select>
+      </div>
+      <div class="row mb-3">
+        <label for="state" class="form-label">State</label>
+        <select name="state" id="state">
+          <option value="new">New</option>
+          <option value="almost new">Almost New</option>
+          <option value="used">Used</option>
+        </select>
+      </div>
+      <div class="row mb-3">
+        <label for="image" class="form-label">Insert your game´s photo</label>
+        <input class="form-control" type="file" name="image" id="image" required multiple>
+      </div>
+      <div class="btn-create">
         <button type="submit" class="btn btn-outline-info bg-light">Create</button>
-    </div>
+      </div>
     </form>
-     </div>
   </div>
+</div>
