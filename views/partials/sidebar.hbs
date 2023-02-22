@@ -1,8 +1,8 @@
 
 <div class="profile-bar">
 <div class=" profile-username d-flex-start flex-column flex-shrink-0 mt-3" style="width: 156px; height: 100%">
-    <a href="#" class="d-flex align-items-center text-primary text-decoration-none pb-3" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+    <a href="/profile/${id}/edit-profile" class="d-flex align-items-center text-primary text-decoration-none pb-3" aria-expanded="false">
+        <img src="{{currentUser.image}}" width="40" height="40" class="rounded-circle me-2">
         <strong style="color:rgb(10, 207, 207)">{{currentUser.username}}</strong>
     </a>
     <ul>
@@ -10,7 +10,7 @@
         <li class="d-flex"><a class="dropdown-item mt-2 bi bi-arrow-clockwise" href="/profile/pending-validations"> Pending Validations</a></li>
         <li class="d-flex"><a class="dropdown-item mt-2 bi bi-collection" href="#"> Historic</a></li>
         <li class="d-flex"><a class="dropdown-item mt-2 bi bi-heart-pulse" href="#"> Favorites</a></li>
-        <li class="d-flex"><a class="dropdown-item mt-2 bi bi-pencil-square" href="#"> Edit profile</a></li>
+        <li class="d-flex"><a class="dropdown-item mt-2 bi bi-pencil-square" href="/profile/${id}/edit-profile"> Edit profile</a></li>
         <li class="d-flex"><a class="dropdown-item mt-2 bi bi-box-arrow-right" href="/logout"> Logout</a></li>
     </ul>
 
