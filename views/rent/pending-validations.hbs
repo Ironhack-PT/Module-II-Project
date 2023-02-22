@@ -14,13 +14,25 @@
                     <span>{{#formatDate rent.end}} {{/formatDate}}</span>
                     <p class="card-text">Price per day: {{rent.game.price}}€</p>
                     <div class="d-flex justify-content-center">
-                        <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
+                        <img src="{{game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
                     </div>
                 </div>
+                {{#isValidating rent=rent}}
                 <div class="d-flex justify-content-around mb-2">
-                    <button class="pending-game-btn btn btn-small" style="background-color:rgb(131, 131, 125)">Waiting
+                    <button class="pending-game-btn btn btn-small mt-4" style="background-color:rgb(131, 131, 125)">Waiting
                         for validation</button>
                 </div>
+                {{/isValidating}}
+
+                {{#isRented rent=rent}}
+                <div class=" validatedrent">
+                    <div class="mb-2">
+                        <button class="rented-game btn btn-small bi bi-controller mt-4">
+                            Enjoy the game!</button>
+                    </div>
+                </div>
+                {{/isRented}}
+
                 <p>Owner: {{rent.game.user.username}}</p>
             </div>
         </div>
@@ -49,7 +61,7 @@
                     <span>{{#formatDate rent.end}} {{/formatDate}}</span>
                     <p class="card-text">Price per day: {{rent.game.price}}€</p>
                     <div class="d-flex justify-content-center">
-                        <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
+                        <img src="{{game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
                     </div>
                     {{#isValidating rent=rent}}
                     <div class="mb-2 requestedrent">
@@ -68,28 +80,21 @@
                                 Deny
                             </button>
                         </form>
-
-
                     </div>
                     {{/isValidating}}
 
                     {{#isRented rent=rent}}
-                    <div class=" validatedrent"> <!--Probando para DOM-->
-                        <div class="mb-2">
+                    <div class=" validatedrent">
+                        <div class="mb-2  d-flex px-4">
                             <button class="rented-game btn btn-small bi bi-calendar-check-fill mt-4">
                                 Rented to {{rent.renter.username}}</button>
                         </div>
                     </div>
                     <div class="d-flex justify-content-evenly mt-1">
 
-                        <button class="btn my-btn btn-primary update-rent-btn" type="submit" data-idRent="{{rent.id}}"
-                            data-action="Rented">
-                            Accept
-                        </button>
+                         <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login btn-rent" href="/rent/historic" style="color:rgb(10, 207, 207); text-decoration:none"> GO TO YOUR HISTORIC</a></button>
 
                     </div>
-
-
                     {{/isRented}}
                 </div>
             </div>

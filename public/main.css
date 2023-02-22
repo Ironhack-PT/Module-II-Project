@@ -143,3 +143,12 @@ li {
 .rented-game {
   background-color:rgb(17, 218, 47);
 }
+
+.btn-historic {
+  text-decoration: none;
+  color: rgb(10, 207, 207);
+}
+
+.pending-li{
+  width: fit-content
+}

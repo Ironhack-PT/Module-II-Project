@@ -45,7 +45,6 @@ module.exports.pendingValidation = (req, res, next) => {
         const rentsReducer = pendingRents.reduce((acc, rent) => {
             // console.log(rent.renter.toString(), req.user.id)
             if (rent.renter._id.toString() === req.user.id) {
-                console.log('in');
                 acc.rented ? acc.rented = [...acc.rented, rent] : acc.rented = [rent]
             }
             if (rent.tenant.toString() === req.user.id) {
@@ -78,3 +77,28 @@ module.exports.doDelete = (req, res, next) => {
       })
     }
 
+
+    module.exports.historic = (req, res, next) => {
+        Rent.find({ $or: [{ tenant: req.user.id }, { renter: req.user.id }] },)
+        .populate({
+            path    : 'game',
+            populate: { path: 'user' }
+        })
+        .populate ({
+            path    : 'renter',
+        })
+        .then((historicRents) => {
+            const histReducer = historicRents.reduce((acc, rent) => {
+
+                if (rent.renter._id.toString() === req.user.id && rent.status === "Rented") {
+                    acc.renter ? acc.renter = [...acc.renter, rent] : acc.renter = [rent]
+                }
+                if (rent.tenant.toString() === req.user.id && rent.status === "Rented") {
+                    acc.tenant ? acc.tenant = [...acc.tenant, rent] : acc.tenant = [rent]
+                }
+                return acc
+            }, {})
+            res.render("rent/historic", {histReducer})
+        })
+        .catch(error=> res.send(error))
+    }

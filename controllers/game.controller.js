@@ -19,8 +19,8 @@ module.exports.doCreate = (req, res, next) => {
 		user: req.user.id,
 	}
 
-	if (req.file) {
-		newGame.image = req.file.path
+	if (req.files) {
+		newGame.image = req.files.map(file => file.path);
 	}
 
 	Game.create(newGame)
