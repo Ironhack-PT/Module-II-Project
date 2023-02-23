@@ -1,3 +1,4 @@
+
 const { modelName } = require("../models/Game.model")
 const Game = require("../models/Game.model")
 const Like = require("../models/Like.model")
@@ -12,11 +13,19 @@ module.exports.profile = (req, res, next) => {
 }
 
 module.exports.findRent = (req, res, next) => {
-	Game.find({ user: { $ne: req.user.id } })
-		.then((games) => {
-			res.render("user/total-games", { games })
-		})
-		.catch((err) => console.err(err))
+	if (req.user) {
+		Game.find({ user: { $ne: req.user.id } })
+			.then((games) => {
+				res.render("user/total-games", { games })
+			})
+			.catch((err) => console.err(err))
+	} else {
+		Game.find()
+			.then((games) => {
+				res.render("user/total-games", { games })
+			})
+			.catch((err) => console.err(err))
+	}
 }
 
 module.exports.edit = (req, res, next) => {
