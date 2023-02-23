@@ -71,5 +71,10 @@ module.exports.search = (req, res, next) => {
 		.then((games) => {
 			res.render("user/total-games", { games })
 		})
-		.catch((err) => console.err(err))
-}
+		.catch((err) => {
+			if (mongoose.Error.ValidationError) {
+				renderWithErrors(err.errors)
+			} else {
+				next(err)
+			}
+		})}

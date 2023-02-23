@@ -60,13 +60,13 @@ module.exports.pendingValidation = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-//   console.log('ID', req.params.id)
-//   console.log('newStatus', req.query.newStatus)
-  Rent.findByIdAndUpdate(req.params.id, { $set : { status: req.query.newStatus}})
-  .then(() => res.status(204).json({ status: 'Rented' }))
-  .catch(err => next(err))
-}
-
+    //   console.log('ID', req.params.id)
+    //   console.log('newStatus', req.query.newStatus)
+      Rent.findByIdAndUpdate(req.params.id, { $set : { status: req.query.newStatus}})
+      .then(() => res.status(204).json({ status: 'Rented' }))
+      .catch(err => next(err))
+    }
+    
 module.exports.doDelete = (req, res, next) => {
     Rent.findByIdAndDelete(req.params.id)
     .then(() => {
