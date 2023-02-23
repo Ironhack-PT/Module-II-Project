@@ -1,52 +1,58 @@
-<h1>GAMES RENTED TO OTHER USERS</h1>
-
-<div class="col-10 mt-3">
-    <div class="row m-0">
-        {{#each histReducer.renter as |rent|}}
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
-            <div class="card card-own-games d-flex align-items-center">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h3 class="card-title">Title: {{rent.game.title}}</h3>
-                    </div>
-                    <span>{{#formatDate rent.start}} {{/formatDate}}</span>
-                    <span> to</span>
-                    <span>{{#formatDate rent.end}} {{/formatDate}}</span>
-                    <p class="card-text">Price per day: {{rent.game.price}}€</p>
-                    <div class="d-flex justify-content-center">
-                        <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
-                    </div>
-                </div>
-                <p>Owner: {{rent.game.user.username}}</p>
-            </div>
-        </div>
-        {{/each}}
+<div class="row m-0 mt-3">
+    <div class="col-2">
+        {{> sidebar}}
     </div>
-</div>
-
-
-<h1>GAMES RENTED FROM OTHER USERS</h1>
-
-<div class="col-10 mt-3">
-    <div class="row m-0">
-        {{#each histReducer.tenant as |rent|}}
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
-            <div class="card card-own-games d-flex align-items-center">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h3 class="card-title">Title: {{rent.game.title}}</h3>
-                    </div>
-                    <span>{{#formatDate rent.start}} {{/formatDate}}</span>
-                    <span> to</span>
-                    <span>{{#formatDate rent.end}} {{/formatDate}}</span>
-                    <p class="card-text">Price per day: {{rent.game.price}}€</p>
-                    <div class="d-flex justify-content-center">
-                        <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
+    <div class="col-10 mt-3">
+        <h2 class="pt-2" style="color:rgb(10, 207, 207)">Historic</h2>
+        <div class="col-10 mt-3">
+            <h3>Games rented to others users</h3>
+            <div class="row m-0">
+                {{#each histReducer.renter as |rent|}}
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
+                    <div class="card card-own-games d-flex align-items-center">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                            </div>
+                            <span>{{#formatDate rent.start}} {{/formatDate}}</span>
+                            <span> to</span>
+                            <span>{{#formatDate rent.end}} {{/formatDate}}</span>
+                            <p class="card-text">Price per day: {{rent.game.price}}€</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
+                            </div>
+                        </div>
+                        <p>Owner: {{rent.game.user.username}}</p>
                     </div>
                 </div>
-                <p>Renter:  {{rent.renter.username}}</p>
+                {{/each}}
             </div>
         </div>
-        {{/each}}
+
+
+        <div class="col-10 mt-3">
+            <h3>Games rented from others users</h3>
+            <div class="row m-0">
+                {{#each histReducer.tenant as |rent|}}
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
+                    <div class="card card-own-games d-flex align-items-center">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                            </div>
+                            <span>{{#formatDate rent.start}} {{/formatDate}}</span>
+                            <span> to</span>
+                            <span>{{#formatDate rent.end}} {{/formatDate}}</span>
+                            <p class="card-text">Price per day: {{rent.game.price}}€</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
+                            </div>
+                        </div>
+                        <p>Renter: {{rent.renter.username}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>
