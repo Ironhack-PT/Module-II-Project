@@ -1,7 +1,6 @@
 
 const { modelName } = require("../models/Game.model")
 const Game = require("../models/Game.model")
-const Like = require("../models/Like.model")
 const User = require("../models/User.model")
 
 module.exports.profile = (req, res, next) => {
