@@ -1,25 +1,30 @@
 <div class="row">
-    <div class="col-4 mt-2">
 
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-2">
         <img src="/images/continuous-one-line-drawing-gaming-joystick_253256-75.jpg"
             style="float: left; height: 300px; width: 400px">
-
     </div>
-    <div class="home-title col-4 mt-5">
-        <div class="d-flex flex-column">
-            <h2 class="mb-4"style="color:rgb(10, 207, 207)">Welcome to AlquiGame!</h2>
+
+    <div class="home-title col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-5">
+        <div class="d-flex flex-column align-center">
+            <h2 class="mb-4" style="color:rgb(10, 207, 207)">Welcome to AlquiGame!</h2>
             <h4>Rent your games near your home and save money <br> in a few steps...</h4>
             <p>Almost without moving from your sofa</p>
         </div>
-        
-    <form class="m-3" style="text-align: center;" method="POST" action="/game/search">
-	    <input type="text" placeholder="Search new games..." name="value"/>
-	    <button type="submit">Go!</button>
-     </form>
-     
-        {{>mapbox}}
+
+        <form class="m-5" style="text-align: center;" method="POST" action="/game/search">
+
+            <div class="p-1">
+                <input class="home-search" type="text" placeholder="Search new games to rent..." name="value" />
+            </div>
+            <button type="submit"><img class="spaceinv-btn" src="/images/Space_Invaders_Second_Row.png"></button>
+        </form>
+        <div>
+            {{>mapbox}}
+        </div>
     </div>
-    <div class="col-4 mt-5">
+
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-5">
         <img src="/images/dados.png" class="px-3 mt-2" style="float: right; height: 200px; width: 300px">
 
     </div>
