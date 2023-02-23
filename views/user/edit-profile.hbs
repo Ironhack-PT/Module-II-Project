@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+     <div class="create-game col-4">
+      <div class="create-game-intro">
+      <h2>Update your profile</h2>
+      </div>
+
+<form action="/profile/edit-profile" method="POST" enctype="multipart/form-data">
+  <div class=" row mb-3">
+    <label for="username">User Name</label>
+    <input value="{{currentUser.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" type="text" name="username" required >
+      <div class="invalid-feedback">
+      {{errors.username}}
+      </div>
+  </div>
+  <div class="row mb-3">
+      <label for="image" class="form-label">Change your profile img</label>
+      <input class="form-control" type="file" name="image" id="image">
+    </div>
+  <div class="btn-create">
+    <button type="submit" class="btn btn-outline-info bg-light">Update</button>
+  </div>
+</form>
+ </div>
+</div>

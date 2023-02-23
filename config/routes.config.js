@@ -73,6 +73,9 @@ router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.hist
 
 router.get("/profile", authMiddleware.isAuthenticated, userController.profile);
 router.get("/rent-a-game",authMiddleware.isAuthenticated,userController.findRent);
+router.get("/profile/:id/edit-profile", authMiddleware.isAuthenticated, userController.edit)
+router.post("/profile/edit-profile", authMiddleware.isAuthenticated, upload.single('image'), userController.doEdit)
+
 
 
 //LOGOUT
