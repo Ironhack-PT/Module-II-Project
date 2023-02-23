@@ -72,7 +72,7 @@ router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.hist
 //PROFILE
 
 router.get("/profile", authMiddleware.isAuthenticated, userController.profile);
-router.get("/rent-a-game",authMiddleware.isAuthenticated,userController.findRent);
+router.get("/rent-a-game", userController.findRent);
 
 
 //LOGOUT

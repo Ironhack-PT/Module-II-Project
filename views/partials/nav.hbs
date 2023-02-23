@@ -7,11 +7,11 @@
   {{/isHome}}
 
   <div class="d-flex justify-content-end">
-    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login btn-rent" href="/new-game" style="color:rgb(10, 207, 207); text-decoration:none"> Create your Games</a></button>
+    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login btn-new-game" href="/rent-a-game">Rent a new game</a></button>
     {{#if currentUser}}
     <div class="d-flex">
+    <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login btn-rent" href="/new-game" style="color:rgb(10, 207, 207); text-decoration:none"> Create your Games</a></button>
     <button class="btn my-btn mx-2" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login btn-rent" href="/profile" style="color:rgb(10, 207, 207); text-decoration:none">Profile</a></button>
-    <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/logout">Logout</a></button>
     </div>
     {{else}}
     <button class="btn my-btn" style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a class="link-login"href="/register">Register or sign up</a></button>
