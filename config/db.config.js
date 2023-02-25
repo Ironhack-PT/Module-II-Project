@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/module-2-project';
+require("dotenv").config()
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/module-2-project';
 mongoose.set('strictQuery', true)
 
-mongoose.connect(MONGO_URL, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     autoIndex: true, 
   })
     .then(response => console.log(`Connected to Mongo! Database name: '${response.connections[0].name}'`))
-    .catch(err => console.error('Error connecting to mongo', err))
+    .catch(err => console.error('Error connecting to mongo', err,MONGODB_URI))
   
   process.on('SIGINT', function () {
     mongoose.connection.close(function () {
@@ -16,4 +17,4 @@ mongoose.connect(MONGO_URL, {
     });
   });
   
-  module.exports.MONGO_URL = MONGO_URL
+  module.exports.MONGODB_URI = MONGODB_URI

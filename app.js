@@ -1,16 +1,14 @@
 require("dotenv").config()
-
+require("./config/db.config")
 const express = require("express")
 const logger = require("morgan")
 const passport = require('passport');
 const createError = require("http-errors")
-const { sessionConfig } = require('./config/session.config')
-const router = require('./config/routes.config');
 
-require("./config/db.config")
+
 require("./config/hbs.config")
 require('./config/passport.config');
-
+const { sessionConfig } = require('./config/session.config')
 const app = express()
 
 app.use(logger("dev"))
@@ -31,6 +29,8 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 })
+
+const router = require('./config/routes.config');
 
 /** Router **/
 app.use('/', router)

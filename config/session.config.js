@@ -1,7 +1,7 @@
 const User = require('../models/User.model')
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo');
-const { MONGO_URL } = require('./db.config');
+const { MONGODB_URI } = require('./db.config');
 
 const MAX_AGE = 7;
 
@@ -15,8 +15,7 @@ module.exports.sessionConfig = expressSession({
     maxAge: 24 * 3600 * 1000 * MAX_AGE
   },
   store: new MongoStore({
-    mongoUrl: MONGO_URL,
-    
+    mongoUrl: MONGODB_URI,
   })
 })
 
