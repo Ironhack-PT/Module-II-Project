@@ -1,6 +1,8 @@
 const Game = require("../models/Game.model")
 const mongoose = require("mongoose")
 const Rent = require("../models/Rent.model")
+const User= require("../models/User.model")
+const Favorite = require("../models/Favorite.model")
 const sendMail = require("../config/mailer.config")
 const createRentMail = require("../config/templates/createRentMail")
 
@@ -61,8 +63,7 @@ module.exports.pendingValidation = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-	//   console.log('ID', req.params.id)
-	//   console.log('newStatus', req.query.newStatus)
+	
 	Rent.findByIdAndUpdate(req.params.id, {
 		$set: { status: req.query.newStatus },
 	})
@@ -81,48 +82,66 @@ module.exports.doDelete = (req, res, next) => {
 }
 
 module.exports.historic = (req, res, next) => {
-	Rent.find({ $or: [{ tenant: req.user.id }, { renter: req.user.id }] })
-		.populate({
-			path: "game",
-			populate: { path: "user" },
-		})
-		.populate({
-			path: "renter",
-		})
-		.then((historicRents) => {
-			const histReducer = historicRents.reduce((acc, rent) => {
-				if (
-					rent.renter._id.toString() === req.user.id &&
-					rent.status === "Rented"
-				) {
-					acc.renter
-						? (acc.renter = [...acc.renter, rent])
-						: (acc.renter = [rent])
-				}
-				if (
-					rent.tenant.toString() === req.user.id &&
-					rent.status === "Rented"
-				) {
-					acc.tenant
-						? (acc.tenant = [...acc.tenant, rent])
-						: (acc.tenant = [rent])
-				}
-				return acc
-			}, {})
-			res.render("rent/historic", { histReducer })
+	User.findById(req.user.id)
+		.populate('favorites')
+		.then((user) => {
+			return Rent.find({ $or: [{ tenant: req.user.id }, { renter: req.user.id }] })
+				.populate({
+					path: "game",
+					populate: { path: "user" },
+				})
+				.populate({
+					path: "renter",
+				})
+				.then((historicRents) => {
+				
+					const histReducer = historicRents.reduce((acc, rent) => {
+						if (
+							rent.renter._id.toString() === req.user.id &&
+							rent.status === "Rented"
+						) {
+							acc.renter
+								? (acc.renter = [...acc.renter, rent])
+								: (acc.renter = [rent])
+						}
+						if (
+							rent.tenant.toString() === req.user.id &&
+							rent.status === "Rented"
+						) {
+							acc.tenant
+								? (acc.tenant = [...acc.tenant, rent])
+								: (acc.tenant = [rent])
+						}
+						return acc
+					}, {})
+	
+					
+					res.render("rent/historic", { histReducer, favorites: user.favorites })
+				})
 		})
 		.catch((error) => res.send(error))
 }
 
 module.exports.favorites = (req, res, next) => {
-	Rent.find({ tenant: req.user.id })
-		.populate({
-			path: "game",
-			populate: { path: "user" },
-		})
-		.then((rents) => {
-            const favorites = rents.filter(rent => rent.favorite)
-			res.render("rent/favorites", { favorites })
-		})
-		.catch((error) => res.send(error))
+	const user = req.user.id
+	const rent = req.params.id
+	const favorites = {
+		user,
+		rent,
+	}
+
+	Favorite.findOne({ user, rent }).then((dbFavorite) => {
+		if (dbFavorite) {
+			return Favorite.findByIdAndDelete(dbFavorite.id) // Borrar el like = dislike
+				.then((createdFavorite) => {
+					res.status(204).json({ like: createdFavorite })
+					res.status(204).json({ deleted: true })
+				})
+		} else {
+			return Favorite.create(favorite).then(() => {
+				res.status(201).json({ ok: true })
+				res.status(201).json({ deleted: false })
+			})
+		}
+	})
 }

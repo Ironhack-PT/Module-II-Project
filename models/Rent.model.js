@@ -30,12 +30,16 @@ const rentSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Requested", "Reserved", "Free", "Rented"],
 		default: "Requested",
-	},
-	favorite: {
-		type: Boolean,
-		default: false,
-	},
+	}
 })
+
+rentSchema.virtual('favorites', {
+  ref: 'Favorite',
+  foreignField: 'rent',
+  localField: '_id',
+  justOne: false
+})
+
 
 const Rent = mongoose.model("Rent", rentSchema)
 
