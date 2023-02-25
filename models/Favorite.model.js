@@ -1,21 +1,16 @@
 const mongoose = require('mongoose');
 
-const likeSchema = new mongoose.Schema(
+const favoriteSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Types.ObjectId,
       ref: 'User',
-      required: true
-    },
-    game: {
-      type: mongoose.Types.ObjectId,
-      ref: 'Game',
-      required: true
+      required: [true, 'A like must have a user']
     },
     rent: {
       type: mongoose.Types.ObjectId,
       ref: 'Rent',
-      required: true
+      required: [true, 'A like must have a rent']
     }
   },
   {
@@ -26,6 +21,6 @@ const likeSchema = new mongoose.Schema(
   }
 )
 
-const Like = mongoose.model('Like', likeSchema);
+const Favorite = mongoose.model('Favorite', favoriteSchema);
 
-module.exports = Like;
+module.exports = Favorite;

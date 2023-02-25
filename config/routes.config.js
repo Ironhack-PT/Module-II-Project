@@ -44,12 +44,6 @@ router.get('/profile/:id/edit', authMiddleware.isAuthenticated, gameController.u
 router.post('/profile/:id/edit', authMiddleware.isAuthenticated, upload.array('image'), gameController.doUpdate);
 
 
-// LIKES
-
-
-// router.post('/game/:id/like', authMiddleware.isAuthenticated, userController.like)
-
-
 // RENT
 
 router.get("/game/:id/rent", authMiddleware.isAuthenticated, rentController.createRent);
@@ -65,7 +59,7 @@ router.get("/profile/pending-validations", authMiddleware.isAuthenticated, rentC
 router.post('/rent/:id/delete', authMiddleware.isAuthenticated, rentController.doDelete)
 
 router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.historic )
-
+router.get("/rent/favorites", authMiddleware.isAuthenticated, rentController.favorites )
 
 
 

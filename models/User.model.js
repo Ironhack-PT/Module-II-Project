@@ -55,6 +55,13 @@ const userSchema = new mongoose.Schema({
     justOne: false
   })
 
+  userSchema.virtual('favorites', {
+    ref: 'Favorite',
+    foreignField: 'favorite',
+    localField: '_id',
+    justOne: false
+  })
+
   userSchema.pre('save', function (next) {
     const rawPassword = this.password;
     if (this.isModified('password')) {   
