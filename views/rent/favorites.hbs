@@ -6,17 +6,13 @@
         <h2 class="pt-2" style="color:rgb(10, 207, 207)">Favorites</h2>
         <div class="col-10 mt-3">
             <div class="row m-0">
-                {{#each favorites as |rent|}}
+                {{#each favorite as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                                <h3 class="card-title">{{rent.game.title}}</h3>
                             </div>
-                            <span>{{#formatDate rent.start}} {{/formatDate}}</span>
-                            <span> to</span>
-                            <span>{{#formatDate rent.end}} {{/formatDate}}</span>
-                            <p class="card-text">Price per day: {{rent.game.price}}€</p>
                             <div class="d-flex justify-content-center">
                                 <img src="{{game.image}}" width="150px" height="150px" class="card-image"></img>
                             </div>

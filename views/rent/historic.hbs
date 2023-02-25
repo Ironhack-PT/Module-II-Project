@@ -1,5 +1,4 @@
 <div class="row m-0 mt-3">
-    aslkfnasknflkasnflknaslkfn
     <div class="col-2">
         {{> sidebar}}
     </div>
@@ -24,8 +23,7 @@
                             </div>
                         </div>
                         <p>Owner: {{rent.game.user.username}}</p>
-                        <button class="favorite-btn btn text-primary" type="button" value="{{rent.id}}">
-                            <i class="bi bi-heart"></i>
+                        <button class="favoriteBtn btn text-primary" type="button" value="{{rent.id}}">
                             {{#hasFavorite favorites =../favorites rent=rent}}
                             <i class="bi bi-heart-fill"></i>
                             {{else}}

@@ -36,7 +36,8 @@ hbs.registerHelper("isHome", function (options) {
 })
 
 hbs.registerHelper("hasFavorite", function (options) {
-	const { favorites, rent } = options.hash
+	const { favorites, rent} = options.hash
+	console.log(favorites, rent)
 	if (favorites.some((favorite) => favorite.rent.toString() === rent.id)) {
 		return options.fn(this)
 	} else {

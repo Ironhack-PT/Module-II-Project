@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
 
   userSchema.virtual('favorites', {
     ref: 'Favorite',
-    foreignField: 'favorite',
+    foreignField: 'user',
     localField: '_id',
     justOne: false
   })

@@ -85,6 +85,7 @@ module.exports.historic = (req, res, next) => {
 	User.findById(req.user.id)
 		.populate('favorites')
 		.then((user) => {
+            console.log(user)
 			return Rent.find({ $or: [{ tenant: req.user.id }, { renter: req.user.id }] })
 				.populate({
 					path: "game",
@@ -130,18 +131,38 @@ module.exports.favorites = (req, res, next) => {
 		rent,
 	}
 
-	Favorite.findOne({ user, rent }).then((dbFavorite) => {
+	Favorite.findOne({ user, rent })
+    .then((dbFavorite) => {
+        console.log("entro")
 		if (dbFavorite) {
-			return Favorite.findByIdAndDelete(dbFavorite.id) // Borrar el like = dislike
+			return Favorite.findByIdAndDelete(dbFavorite.id) 
 				.then((createdFavorite) => {
 					res.status(204).json({ like: createdFavorite })
-					res.status(204).json({ deleted: true })
 				})
 		} else {
-			return Favorite.create(favorite).then(() => {
+			return Favorite.create(favorites).then(() => {
 				res.status(201).json({ ok: true })
-				res.status(201).json({ deleted: false })
 			})
 		}
 	})
+}
+
+module.exports.printFavorites = (req, res, next) => {
+    User.findById(req.user.id)
+		.populate('favorites')
+		.then((user) => {
+			return Rent.find({ renter: req.user.id })
+				.populate({
+					path: "game",
+					populate: { path: "user" },
+				})
+				.populate({
+					path: "renter",
+				})
+                
+				.then((favorite) => {
+					res.render("rent/favorites", {favorite})
+				})
+		})
+		.catch((error) => res.send(error))
 }

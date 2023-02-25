@@ -56,11 +56,13 @@ router.patch("/rent/:id", authMiddleware.isAuthenticated, rentController.doEdit)
 
 router.get("/profile/pending-validations", authMiddleware.isAuthenticated, rentController.pendingValidation);
 
-router.post('/rent/:id/delete', authMiddleware.isAuthenticated, rentController.doDelete)
+router.post('/rent/:id/delete', authMiddleware.isAuthenticated, rentController.doDelete);
 
-router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.historic )
-router.get("/rent/favorites", authMiddleware.isAuthenticated, rentController.favorites )
+router.get("/rent/historic", authMiddleware.isAuthenticated, rentController.historic );
 
+router.get("/rent/favorites", authMiddleware.isAuthenticated, rentController.printFavorites );
+
+router.post('/rent/:id/favorites', authMiddleware.isAuthenticated, rentController.favorites);
 
 
 //PROFILE
