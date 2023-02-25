@@ -1,26 +1,62 @@
 <h2 class="text-center pt-2">Other games</h2>
-    <div class="row">
-        {{#each games as |game|}}
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
-            <div class="card card-other-games d-flex mt-3">
-                <div class="card-body">
-                    <h3 class="card-title">Name: {{game.title}}</h3>
-                    <p class="card-text-desc">Description: {{game.description}}</p>
-                    <p class="card-text">Type: {{game.type}}</p>
-                    <p class="card-text">State: {{game.state}}</p>
-                    <p class="card-text">Price per day: {{game.price}}€</p>
-                      <div class="d-flex justify-content-center">
+<div class="row">
+    {{#each games as |game|}}
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
+        <div class="card card-other-games d-flex mt-3">
+            <div class="card-body">
+                <h3 class="card-title">Name: {{game.title}}</h3>
+                <p class="card-text-desc">Description: {{game.description}}</p>
+                <p class="card-text">Type: {{game.type}}</p>
+                <p class="card-text">State: {{game.state}}</p>
+                <p class="card-text">Price per day: {{game.price}}€</p>
+                <div id="{{game.title}}" class="carousel slide">
+                    <div class="carousel-indicators">
+                        {{#each game.image as |img|}}
+                        <button type="button" data-bs-target="#{{game.title}}" data-bs-slide-to="{{@index}}"
+                            class="active btn-carousel" aria-current="true" aria-label="Slide 1"></button>
+                        {{/each}}
+                    </div>
+                    <div class="carousel-inner d-flex">
+                        {{#each game.image as |img|}}
+                        {{#if @first}}
+                        <div class="carousel-item active">
+                            <img src="{{img}}" width="200px" height="200px" alt="...">
+                        </div>
+                        {{else}}
+                        <div class="carousel-item">
+                            <img src="{{img}}" width="200px" height="200px" alt="...">
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#{{game.title}}"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#{{game.title}}"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+
+
+
+
+
+
+                {{!-- <div class="d-flex justify-content-center">
                     <img src="{{game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
-                      </div>
-                </div>
-                <div class="p-3 d-flex justify-content-around">
-                    <form action="/game/{{game.id}}/rent" method="GET"> 
-                        <button class="delete-game-btn btn btn-danger btn-small">RENT</button>
-                    </form>
-                </div>
+                </div> --}}
+            </div>
+            <div class="p-3 d-flex justify-content-around">
+                <form action="/game/{{game.id}}/rent" method="GET">
+                    <button class="delete-game-btn btn btn-danger btn-small">RENT</button>
+                </form>
             </div>
         </div>
+    </div>
     {{/each}}
 </div>
-
-
