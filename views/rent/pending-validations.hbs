@@ -1,18 +1,23 @@
 
-    <div class="col-12 mt-3">
+    <div class="row m-0 mt-3">
+    <div class="col-2 mt-4">
+        {{> sidebar}}
+    </div>
+    
+    <div class="col-10 mt-3">
 
         <h2 class="pt-2 text-center" style="color:rgb(10, 207, 207)">PENDING VALIDATIONS</h2>
 
         
         <div class="col-12 mt-3">
             <div class="row m-0">
-                  <h4 class="text-center mt-4">REQUEST FROM OTHER USERS</h4>
+                  <h4 class="text-center mt-4 request">REQUEST FROM OTHER USERS</h4>
                 {{#each rentsReducer.requested as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">{{rent.game.title}}</h3>
+                                <h3 class="card-title card-name">{{rent.game.title}}</h3>
                             </div>
                             <span>{{#formatDate rent.start}} {{/formatDate}}</span>
                             <span> to</span>
@@ -68,13 +73,13 @@
 
         <div class="col-12 mt-5">
             <div class="row m-0">
-                    <h4 class="text-center mt-4">REQUEST TO OTHER USERS</h4>
+                    <h4 class="text-center mt-4 request">REQUEST TO OTHER USERS</h4>
                 {{#each rentsReducer.rented as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                                <h3 class="card-title card-name">{{rent.game.title}}</h3>
                             </div>
                             <span>{{#formatDate rent.start}} {{/formatDate}}</span>
                             <span> to</span>

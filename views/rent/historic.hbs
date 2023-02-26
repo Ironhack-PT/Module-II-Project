@@ -3,16 +3,16 @@
         {{> sidebar}}
     </div>
     <div class="col-10 mt-3">
-        <h2 class="pt-2" style="color:rgb(10, 207, 207)">Historic</h2>
-        <div class="col-10 mt-3">
-            <h3>Games rented to others users</h3>
+        <h2 class="pt-2 text-center" style="color:rgb(10, 207, 207)">HISTORIC</h2>
+        <div class="col-12 mt-3">
+             <h4 class="text-center mt-4 request">GAMES RENTED TO OTHER USERS</h4>
             <div class="row m-0">
                 {{#each histReducer.renter as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                                <h3 class="card-title card-name">{{rent.game.title}}</h3>
                             </div>
                             <span>{{#formatDate rent.start}} {{/formatDate}}</span>
                             <span> to</span>
@@ -37,15 +37,15 @@
         </div>
 
 
-        <div class="col-10 mt-3">
-            <h3>Games rented from others users</h3>
+        <div class="col-12 mt-3">
+             <h4 class="text-center mt-4 request">GAMES RENTED FROM OTHER USERS</h4>
             <div class="row m-0">
                 {{#each histReducer.tenant as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">Title: {{rent.game.title}}</h3>
+                                <h3 class="card-title card-name">{{rent.game.title}}</h3>
                             </div>
                             <span>{{#formatDate rent.start}} {{/formatDate}}</span>
                             <span> to</span>
