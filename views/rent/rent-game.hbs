@@ -1,41 +1,44 @@
-<div class="row justify-content-center">
-    <div class="rent-game col-4">
-        <div class="rent-game-intro">
+<div class="row justify-content-center mt-3">
+  <div class="create-game col-4 formgames">
+    
+        <div class="pt-2 mt-4 text-center" style="color:rgb(10, 207, 207)">
             <h2>Rent a new game and enjoy!</h2>
         </div>
 
         <form action="/game/{{game._id}}/rent" method="POST"> 
 
 
-            <!-- Ok -->
+            
             <div class=" row mb-3 hidden">
                 <label for="renter" class="form-label"></label>
                 <input value="{{currentUser.id}}" class="form-control" id="renter" name="renter">
             </div>
 
-            <!-- Ok -->
+            
 
             <div class="row mb-3 hidden">
                 <label for="game" class="form-label">OCULTAR ID JUEGO</label>
                 <input value="{{game._id}}" class="form-control" id="game" name="game">
             </div>
 
-            <!-- Ok -->
+            
 
             <div class="row mb-3 hidden">
                 <label for="tenant" class="form-label">USER JUEGO</label>
                 <input value="{{game.user}}" class="form-control" name="tenant">
             </div>
 
-            <!-- Ok -->
-            <div class="row mb-3">
-                <h2>{{game.title}}</h2>
+           
+
+           
+            <div class="row mb-3 text-center mt-3">
+                <h4>{{game.title}}</h4>
             </div>
 
-            <!-- Ok -->
+         
 
-            <div class="row mb-3">
-                <img src="{{game.image}}"></img>
+            <div class="row mb-3 mt-3">
+                 <img src="{{game.image.[0]}}"></img>
             </div>
 
             <div class="row mb-3">
@@ -53,4 +56,5 @@
             </div>
         </form>
     </div>
+</div>
 </div>

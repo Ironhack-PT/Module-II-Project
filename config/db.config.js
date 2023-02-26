@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require("dotenv").config()
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/module-2-project';
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/module-2-project';
+const MONGODB_URI = 'mongodb://127.0.0.1:27017/module-2-project';
 mongoose.set('strictQuery', true)
 
 mongoose.connect(MONGODB_URI, {

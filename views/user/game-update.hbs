@@ -1,25 +1,46 @@
-<h2>Update Game</h2>
-
-<form action="/profile/{{game.id}}/edit" method="POST" enctype="multipart/form-data">
-  <div>
-    <label for="title">Title of game</label>
-    <input value="{{game.title}}"id="title" type="text" name="title" required />
-  </div>
-  <div>
-    <label for="description">Game description</label>
-    <input value="{{game.description}}"id="description" type="text" name="description" required />
-  </div>
-  <div>
-    <label for="price">Price</label>
-    <input value="{{game.price}}"id="price" type="number" name="price" required min="0" />
-  </div>
-  <div>
-     <label for="state">State</label>
-    <input value="{{game.state}}"id="state" type="text" name="state" required />
-  </div>
-  <div>
-      <label for="image" class="form-label">Insert game img</label>
-      <input class="form-control" type="file" name="image" id="image">
+<div class="row justify-content-center mt-3">
+  <div class="create-game col-4">
+    <div class="create-game-intro">
+      <h2 class="text-center m-3" style="color: rgb(10, 207, 207)">UPDATE YOUR GAME DETAILS</h2>
     </div>
-    <button type="submit" class="btn btn-outline-info bg-light">Submit</button>
-</form>
+
+      <form action="/profile/{{game.id}}/edit" method="POST" enctype="multipart/form-data">
+
+      <div class=" row mb-3">
+        <label for="title" class="form-label">Game Name</label>
+       <input class="form-control" value="{{game.title}}" id="title" type="text" name="title" required />
+      </div>
+        <div class=" row mb-3">
+          <label for="description" class="form-label">Game description</label>
+        <textarea class="form-control" id="description" rows="3"
+          name="description" required>{{game.description}}</textarea>
+        </div>
+        <div class=" row mb-3">
+          <label for="price">Price per day</label>
+          <input class="form-control"value="{{game.price}}" id="price" type="number" name="price" required min="1" />
+        </div>
+<div class="row mb-3">
+        <label for="type" class="form-label">Type</label>
+        <select class="form-control"name="type" id="type">
+          <option value="Retro games">Retro games</option>
+          <option value="Board games">Board games</option>
+          <option value="Console games">Console games</option>
+        </select>
+      </div>
+      <div class="row mb-3">
+        <label for="state" class="form-label">State</label>
+        <select class="form-control"name="state" id="state">
+          <option value="new">New</option>
+          <option value="almost new">Almost New</option>
+          <option value="used">Used</option>
+        </select>
+      </div>
+<div class="row mb-3">
+        <label for="image" class="form-label">Insert your game´s photo</label>
+        <input class="form-control" type="file" name="image" id="image" required multiple>
+      </div>
+        <button type="submit" class="btn btn-outline-info bg-light">Submit</button>
+      </form>
+
+    </div>
+  </div>
