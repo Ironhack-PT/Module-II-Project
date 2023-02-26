@@ -1,3 +1,4 @@
+<div class="text-center ">
 <h2 class="text-center pt-2" style="color:rgb(10, 207, 207)">GAMES AVALAIBLE TO RENT</h2>
 <div class="row">
     {{#each games as |game|}}
@@ -6,9 +7,10 @@
             <div class="card-body">
                 <h3 class="card-title card-name"> {{game.title}}</h3>
                 <p class="card-text-desc m-0">Description: {{game.description}}</p>
-                <p class="card-text mt-2">Type: {{game.type}}</p>
+                <p class="card-text mt-2 m-0">Type: {{game.type}}</p>
                 <p class="card-text m-0">State: {{game.state}}</p>
-                <p class="card-text mb-5">Price per day: {{game.price}}€</p>
+                <p class="card-text mb-2">Price per day: {{game.price}}€</p>
+                <p class="card-text mb-2">Owner: {{game.user.username}}</p>
                 <div id="{{game.title}}" class="carousel slide">
                     <div class="carousel-indicators">
                         {{#each game.image as |img|}}
@@ -41,9 +43,6 @@
                     </button>
                 </div>
             </div>
-
-
-
             <div class="p-3 d-flex justify-content-around">
                 <form action="/game/{{game.id}}/rent" method="GET">
                     <button class="delete-game-btn btn btn-danger btn-small">RENT</button>
@@ -52,4 +51,5 @@
         </div>
     </div>
     {{/each}}
+</div>
 </div>

@@ -10,7 +10,7 @@ hbs.registerHelper("formatDate", (date, options) => {
 
 hbs.registerHelper("isValidating", (options) => {
 	const { rent } = options.hash
-	console.log("****** ", options.hash)
+	// console.log("****** ", options.hash)
 	if (rent.status === "Requested") {
 		return options.fn(this)
 	} else {
@@ -20,7 +20,7 @@ hbs.registerHelper("isValidating", (options) => {
 
 hbs.registerHelper("isRented", (options) => {
 	const { rent } = options.hash
-	console.log("****** ", options.hash)
+	// console.log("****** ", options.hash)
 	if (rent.status === "Rented") {
 		return options.fn(this)
 	} else {
@@ -29,7 +29,7 @@ hbs.registerHelper("isRented", (options) => {
 })
 
 hbs.registerHelper("isHome", function (options) {
-	console.log(options.hash)
+	// console.log(options.hash)
 	if (options && !options.hash.dontRenderSearchbar) {
 		return options.fn(this)
 	}
@@ -37,7 +37,6 @@ hbs.registerHelper("isHome", function (options) {
 
 hbs.registerHelper("hasFavorite", function (options) {
 	const { favorites, rent} = options.hash
-	console.log("hola",favorites, rent)
 	if (favorites.some((favorite) => favorite.rent.toString() === rent.id)) {
 		return options.fn(this)
 	} else {

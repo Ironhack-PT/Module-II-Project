@@ -14,12 +14,14 @@ module.exports.profile = (req, res, next) => {
 module.exports.findRent = (req, res, next) => {
 	if (req.user) {
 		Game.find({ user: { $ne: req.user.id } })
+		.populate('user')
 			.then((games) => {
 				res.render("user/total-games", { games })
 			})
 			.catch((err) => console.err(err))
 	} else {
 		Game.find()
+		.populate('user')
 			.then((games) => {
 				res.render("user/total-games", { games })
 			})

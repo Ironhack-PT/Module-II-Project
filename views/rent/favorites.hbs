@@ -3,7 +3,7 @@
         {{> sidebar}}
     </div>
     <div class="col-10 mt-3">
-        <h2 class="pt-2" style="color:rgb(10, 207, 207)">Favorites</h2>
+        <h2 class="text-center mt-4 request" style="color:rgb(10, 207, 207)">YOUR FAVORITE GAMES</h2>
         <div class="col-10 mt-3">
             <div class="row m-0">
                 {{#each favorite}}
@@ -11,7 +11,7 @@
                     <div class="card card-own-games d-flex align-items-center">
                         <div class="card-body">
                             <div class="text-center">
-                                <h3 class="card-title">{{rent.game.title}}</h3>
+                                <h3 class="card-title card-name">{{rent.game.title}}</h3>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <img src="{{rent.game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
