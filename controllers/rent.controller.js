@@ -7,7 +7,8 @@ const sendMail = require("../config/mailer.config")
 const createRentMail = require("../config/templates/createRentMail")
 
 module.exports.createRent = (req, res, next) => {
-	Game.findById(req.params.id).then((game) => {
+	Game.findById(req.params.id)
+	.then((game) => {
 		const min = new Date().toISOString().split("T")[0]
 		res.render("rent/rent-game", { game, min })
 	})
@@ -133,7 +134,6 @@ module.exports.favorites = (req, res, next) => {
 
 	Favorite.findOne({ user, rent })
     .then((dbFavorite) => {
-        console.log("entro")
 		if (dbFavorite) {
 			return Favorite.findByIdAndDelete(dbFavorite.id) 
 				.then((createdFavorite) => {
@@ -151,15 +151,14 @@ module.exports.printFavorites = (req, res, next) => {
     User.findById(req.user.id)
 		.populate('favorites')
 		.then((user) => {
-			return Rent.find({ renter: req.user.id })
+			return Favorite.find({ renter: req.user.id })
 				.populate({
-					path: "game",
-					populate: { path: "user" },
-				})
+					path: "user",
+				}) 
 				.populate({
-					path: "renter",
-				})
-                
+					path: "rent",
+					populate: { path: "game" },
+				})       
 				.then((favorite) => {
 					res.render("rent/favorites", {favorite})
 				})

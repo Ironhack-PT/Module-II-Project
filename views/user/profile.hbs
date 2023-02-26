@@ -6,8 +6,8 @@
       
     </div>
 
-  <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-3 mt-3 text-center ">
-    <h2 class="pt-2" style="color:rgb(10, 207, 207)">YOUR OWN GAMES AVALAIBLE TO RENT</h2>
+  <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-3 text-center ">
+    <h2 class="pt-2 mb-3" style="color:rgb(10, 207, 207)">YOUR OWN GAMES AVALAIBLE FOR RENT</h2>
 
     <div class="row m-0">
       {{#each games as |game|}}
@@ -16,7 +16,7 @@
           <div class="card-body">
             <h3 class="card-title card-name"> {{game.title}}</h3>
             <p class="card-text-desc m-0">Description: {{game.description}}</p>
-            <p class="card-text mt-2">Type: {{game.type}}</p>
+            <p class="card-text mt-3 pt-3">Type: {{game.type}}</p>
             <p class="card-text m-0">State: {{game.state}}</p>
             <p class="card-text mb-5">Price per day: {{game.price}}€</p>
             <div id="{{game.title}}" class="carousel slide">

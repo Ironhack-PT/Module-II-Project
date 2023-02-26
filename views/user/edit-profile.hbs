@@ -1,31 +1,33 @@
 <div class="row m-0 mt-3">
-  <div class="col-2">
+
+  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 mt-4 d-flex justify-content-center">
     {{> sidebar}}
   </div>
-  <div class="col-10 mt-3">
-  <h2 class="pt-2" style="color:rgb(10, 207, 207)">Edit profile</h2>
 
-    <div class="row">
-      <div class="col-4">
+  <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12 text-center create-game edit-profile d-flex justify-content-center mx-5 mt-5">
 
-        <form action="/profile/edit-profile" method="POST" enctype="multipart/form-data">
-          <div class=" row mb-3">
-            <label for="username">User Name</label>
-            <input value="{{currentUser.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}"
-              id="username" type="text" name="username" required>
-            <div class="invalid-feedback">
-              {{errors.username}}
-            </div>
+    <h2 class="pt-2" style="color:rgb(10, 207, 207)">EDIT YOUR PROFILE</h2>
+
+    <div class="row m-0">
+
+      <form action="/profile/edit-profile" method="POST" enctype="multipart/form-data">
+        <div class=" row mb-3">
+          <label for="username">UserName</label>
+          <input value="{{currentUser.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}"
+            id="username" type="text" name="username" required>
+          <div class="invalid-feedback">
+            {{errors.username}}
           </div>
-          <div class="row mb-3">
-            <label for="image" class="form-label">Change your profile img</label>
-            <input class="form-control" type="file" name="image" id="image">
-          </div>
-          <div class="btn-create">
-            <button type="submit" class="btn btn-outline-info bg-light">Update</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="row mb-3">
+          <label for="image" class="form-label">Change your profile img</label>
+          <input class="form-control" type="file" name="image" id="image">
+        </div>
+        <div class="btn-create">
+          <button type="submit" class="btn btn-outline-info bg-light">Update</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 </div>

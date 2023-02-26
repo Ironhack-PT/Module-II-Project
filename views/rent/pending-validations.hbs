@@ -1,13 +1,74 @@
-<div class="row m-0 mt-3">
-    <div class="col-2">
-        {{> sidebar}}
-    </div>
-    <div class="col-10 mt-3">
-        <h2 class="pt-2" style="color:rgb(10, 207, 207)">Pending Validation</h2>
-        <h3>Request to other users</h3>
 
-        <div class="col-10 mt-3">
+    <div class="col-12 mt-3">
+
+        <h2 class="pt-2 text-center" style="color:rgb(10, 207, 207)">PENDING VALIDATIONS</h2>
+
+        
+        <div class="col-12 mt-3">
             <div class="row m-0">
+                  <h4 class="text-center mt-4">REQUEST FROM OTHER USERS</h4>
+                {{#each rentsReducer.requested as |rent|}}
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
+                    <div class="card card-own-games d-flex align-items-center">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h3 class="card-title">{{rent.game.title}}</h3>
+                            </div>
+                            <span>{{#formatDate rent.start}} {{/formatDate}}</span>
+                            <span> to</span>
+                            <span>{{#formatDate rent.end}} {{/formatDate}}</span>
+                            <p class="card-text">Price per day: {{rent.game.price}}€</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
+                            </div>
+                            {{#isValidating rent=rent}}
+                            <div class="mb-2 requestedrent">
+                                <button class="pending-game btn btn-small bi bi-exclamation-triangle-fill mt-1">
+                                    {{rent.renter.username}} is waiting for your validation</button>
+                            </div>
+                            <div class="d-flex justify-content-evenly">
+
+                                <button class="btn my-btn btn-primary update-rent-btn" type="submit"
+                                    data-idRent="{{rent.id}}" data-renter="{{rent.renter.username}}"
+                                    data-action="Rented">
+                                    Accept
+                                </button>
+                                <form action="/rent/{{rent.id}}/delete" method="POST">
+                                    <button class="btn my-btn btn-danger update-rent-btn" type="submit">
+                                        Deny
+                                    </button>
+                                </form>
+                            </div>
+                            {{/isValidating}}
+
+                            {{#isRented rent=rent}}
+                            <div class=" validatedrent">
+                                <div class="mb-2  d-flex px-4">
+                                    <button class="rented-game btn btn-small bi bi-calendar-check-fill mt-4">
+                                        Rented to {{rent.renter.username}}</button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-evenly mt-1">
+
+                                <button class="btn my-btn mx-2 hist-btn"
+                                    style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a
+                                        class="link-login btn-rent" href="/rent/historic"
+                                        style="color:rgb(10, 207, 207); text-decoration:none"> GO TO YOUR
+                                        HISTORIC</a></button>
+
+                            </div>
+                            {{/isRented}}
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="col-12 mt-5">
+            <div class="row m-0">
+                    <h4 class="text-center mt-4">REQUEST TO OTHER USERS</h4>
                 {{#each rentsReducer.rented as |rent|}}
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
                     <div class="card card-own-games d-flex align-items-center">
@@ -47,78 +108,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-        <div class="col-10 mt-3">
-            <h3>Request from other users</h3>
-
-            <div class="row m-0">
-                {{#each rentsReducer.requested as |rent|}}
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-3">
-                    <div class="card card-own-games d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h3 class="card-title">{{rent.game.title}}</h3>
-                            </div>
-                            <span>{{#formatDate rent.start}} {{/formatDate}}</span>
-                            <span> to</span>
-                            <span>{{#formatDate rent.end}} {{/formatDate}}</span>
-                            <p class="card-text">Price per day: {{rent.game.price}}€</p>
-                            <div class="d-flex justify-content-center">
-                                <img src="{{game.image.[0]}}" width="150px" height="150px" class="card-image"></img>
-                            </div>
-                            {{#isValidating rent=rent}}
-                            <div class="mb-2 requestedrent">
-                                <button class="pending-game btn btn-small bi bi-exclamation-triangle-fill mt-1">
-                                    {{rent.renter.username}} is waiting for your validation</button>
-                            </div>
-                            <div class="d-flex justify-content-evenly">
-
-                                <button class="btn my-btn btn-primary update-rent-btn" type="submit"
-                                    data-idRent="{{rent.id}}" data-renter="{{rent.renter.username}}"
-                                    data-action="Rented">
-                                    Accept
-                                </button>
-                                <form action="/rent/{{rent.id}}/delete" method="POST">
-                                    <button class="btn my-btn btn-danger update-rent-btn" type="submit">
-                                        <!--data-idRent="{{rent.id}}" data-action="Free" -->
-                                        Deny
-                                    </button>
-                                </form>
-                            </div>
-                            {{/isValidating}}
-
-                            {{#isRented rent=rent}}
-                            <div class=" validatedrent">
-                                <div class="mb-2  d-flex px-4">
-                                    <button class="rented-game btn btn-small bi bi-calendar-check-fill mt-4">
-                                        Rented to {{rent.renter.username}}</button>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-evenly mt-1">
-
-                                <button class="btn my-btn mx-2"
-                                    style="color:rgb(10, 207, 207); border-color: rgb(10, 207, 207)" type="submit"><a
-                                        class="link-login btn-rent" href="/rent/historic"
-                                        style="color:rgb(10, 207, 207); text-decoration:none"> GO TO YOUR
-                                        HISTORIC</a></button>
-
-                            </div>
-                            {{/isRented}}
-                        </div>
-                    </div>
-                </div>
-
-                {{/each}}
-            </div>
-        </div>
 
     </div>
 </div>

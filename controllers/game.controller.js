@@ -53,10 +53,17 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-	if (req.file) {
-		req.body.image = req.file.path
+
+	const editGame = {
+		...req.body,
+		user: req.user.id,
 	}
-	Game.findByIdAndUpdate(req.params.id, req.body)
+
+	if (req.files) {
+		editGame.image = req.files.map(file => file.path);
+	}
+
+	Game.findByIdAndUpdate(req.params.id, editGame)
 		.then(() => {
 			res.redirect("/profile")
 		})
