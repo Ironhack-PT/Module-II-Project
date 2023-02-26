@@ -46,6 +46,7 @@ gameSchema.virtual('rents', {
   justOne: false
 })
 
+
 const Game = mongoose.model('Game', gameSchema)
 
 module.exports = Game
