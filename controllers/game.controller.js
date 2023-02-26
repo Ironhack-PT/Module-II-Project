@@ -20,7 +20,7 @@ module.exports.doCreate = (req, res, next) => {
 	}
 
 	if (req.files) {
-		newGame.image = req.files.map(file => file.path);
+		newGame.image = req.files.map((file) => file.path)
 	}
 
 	Game.create(newGame)
@@ -53,14 +53,13 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-
 	const editGame = {
 		...req.body,
 		user: req.user.id,
 	}
 
 	if (req.files) {
-		editGame.image = req.files.map(file => file.path);
+		editGame.image = req.files.map((file) => file.path)
 	}
 
 	Game.findByIdAndUpdate(req.params.id, editGame)
@@ -71,17 +70,34 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.search = (req, res, next) => {
-	Game.find({ 
-		title: { '$regex': req.body.value, $options: 'i' } ,
-		user: { $ne: req.user.id }
-	})
-		.then((games) => {
-			res.render("user/total-games", { games })
+	if (req.user) {
+		Game.find({
+			title: { $regex: req.body.value, $options: "i" },
+			user: { $ne: req.user.id },
 		})
-		.catch((err) => {
-			if (mongoose.Error.ValidationError) {
-				renderWithErrors(err.errors)
-			} else {
-				next(err)
-			}
-		})}
+			.then((games) => {
+				res.render("user/total-games", { games })
+			})
+			.catch((err) => {
+				if (mongoose.Error.ValidationError) {
+					renderWithErrors(err.errors)
+				} else {
+					next(err)
+				}
+			})
+	} else {
+		Game.find({
+			title: { $regex: req.body.value, $options: "i" },
+		})
+			.then((games) => {
+				res.render("user/total-games", { games })
+			})
+			.catch((err) => {
+				if (mongoose.Error.ValidationError) {
+					renderWithErrors(err.errors)
+				} else {
+					next(err)
+				}
+			})
+	}
+}
